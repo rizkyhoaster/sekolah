@@ -1,0 +1,331 @@
+/* Bagian sambutan ini jangan lupa */
+.principal-message {
+    display: flex; /* Menggunakan Flexbox untuk tata letak */
+    flex-direction: row; /* Menyusun elemen secara horizontal (gambar di kiri, teks di kanan) */
+    align-items: center; /* Menyelaraskan elemen secara vertikal ke tengah */
+    justify-content: flex-start; /* Menyelaraskan elemen ke kiri */
+    padding: 20px; /* Memberikan ruang di dalam elemen */
+    margin: 20px 0; /* Memberikan jarak luar di atas dan bawah */
+    background-color: #ffffff; /* Warna latar belakang putih */
+    border: 2px solid #f39c12; /* Garis tepi dengan warna biru */
+    border-radius: 10px; /* Menjadikan sudut kotak lebih bulat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan lembut di bawah kotak */
+  }
+  
+  .image-wrapper {
+    flex: 1; /* Menentukan bahwa elemen ini akan mengambil 1 bagian dari ruang yang tersedia */
+    text-align: center; /* Menyelaraskan gambar di tengah secara horizontal */
+    padding: 10px; /* Memberikan ruang di sekitar gambar */
+  }
+  
+  .principal-image {
+    max-width: 250px; /* Gambar tidak akan lebih lebar dari 250px */
+    height: auto; /* Menjaga proporsi gambar tetap sesuai dengan lebar */
+    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+    border: 3px solid #f39c12; /* Memberikan garis tepi berwarna biru pada gambar */
+  }
+  
+  .message-content {
+    flex: 2; /* Menyediakan lebih banyak ruang bagi teks (dua kali ruang gambar) */
+    padding: 10px; /* Memberikan ruang di sekitar teks */
+  }
+  
+  .section-title {
+    font-size: 28px; /* Ukuran font judul */
+    font-weight: bold; /* Membuat teks tebal */
+    margin: 0 0 10px; /* Memberikan jarak bawah pada judul */
+    color: #f39c12; /* Warna biru pada judul */
+  }
+  
+  .highlight {
+    color: #015601; /* Menyorot teks dengan warna biru */
+  }
+  
+  .message {
+    font-size: 16px; /* Ukuran font untuk isi pesan */
+    line-height: 1.8; /* Jarak antar baris untuk kenyamanan membaca */
+    color: #333; /* Warna teks yang gelap */
+    text-align: justify; /* Menyusun teks agar rata kiri dan kanan */
+  }
+  
+  /* Responsif untuk layar kecil (Tablet - Maks. 768px) */
+  @media screen and (max-width: 768px) {
+    .principal-message {
+      flex-direction: row; /* Menjaga gambar tetap di kiri dan teks di kanan */
+      align-items: center; /* Menyelaraskan elemen secara vertikal di tengah */
+      justify-content: flex-start; /* Menyelaraskan elemen ke kiri */
+    }
+  
+    .principal-image {
+      max-width: 150px; /* Menurunkan ukuran gambar menjadi sedikit lebih besar */
+      margin-right: 15px; /* Memberikan jarak antara gambar dan teks */
+    }
+  
+    .section-title {
+      font-size: 24px; /* Menurunkan ukuran font judul */
+    }
+  
+    .message {
+      font-size: 14px; /* Menurunkan ukuran font pesan */
+    }
+  }
+  
+  /* Responsif untuk layar sangat kecil (Ponsel - Maks. 480px) */
+  @media screen and (max-width: 480px) {
+    .principal-message {
+      flex-direction: row; /* Layout tetap horizontal */
+      align-items: center; /* Menyelarankan elemen secara vertikal ke tengah */
+    }
+  
+    .principal-image {
+      max-width: 120px; /* Menjadikan ukuran gambar lebih besar sedikit */
+      margin-right: 10px; /* Memberikan jarak antara gambar dan teks */
+    }
+  
+    .section-title {
+      font-size: 20px; /* Ukuran font judul lebih kecil */
+    }
+  
+    .message {
+      font-size: 12px; /* Ukuran font pesan lebih kecil */
+    }
+  }
+  
+  
+  /*daftar guru*/
+.daftar-guru {
+    background-color: #ffc107; /* Warna latar belakang untuk daftar guru */
+    padding: 20px; /* Memberikan jarak di dalam elemen */
+    text-align: center; /* Menyelaraskan teks ke tengah */
+}
+
+.containeri {
+    max-width: 1200px; /* Batas lebar maksimum */
+    margin: 0 auto; /* Memusatkan elemen */
+    padding: 20px; /* Memberikan jarak di dalam elemen */
+}
+
+h1 {
+    font-size: 2.5em; /* Ukuran font judul */
+    color: #fff; /* Warna teks */
+    margin-bottom: 10px; /* Memberikan jarak di bawah judul */
+}
+
+p {
+    font-size: 1.2em; /* Ukuran font untuk paragraf */
+    color: #fff; /* Warna teks */
+    margin-bottom: 20px; /* Memberikan jarak di bawah paragraf */
+}
+
+/* Card List Styles */
+.card1-list {
+    display: flex; /* Menampilkan elemen secara horizontal */
+    flex-wrap: nowrap; /* Mencegah elemen membungkus ke bawah */
+    justify-content: flex-start; /* Menyusun elemen mulai dari kiri */
+    overflow-x: auto; /* Scroll horizontal */
+    gap: 20px; /* Jarak antar elemen */
+    padding: 10px 0; /* Memberikan jarak atas dan bawah pada list */
+    scroll-behavior: smooth; /* Perpindahan scroll yang halus */
+}
+
+/* Scrollbar Styles */
+.card1-list:hover::-webkit-scrollbar {
+    display: block; /* Scrollbar hanya muncul saat disentuh */
+}
+
+.card1-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Warna scrollbar */
+    border-radius: 4px; /* Membuat scrollbar lebih melengkung */
+}
+
+/* Card Styles */
+.card1 {
+    background-color: #fff; /* Warna latar belakang kartu */
+    border-radius: 10px; /* Membuat sudut kartu melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada kartu */
+    text-align: center; /* Menyelaraskan teks di tengah kartu */
+    width: 200px; /* Lebar kartu */
+    flex-shrink: 0; /* Mencegah kartu mengecil */
+    position: relative; /* Untuk posisi elemen anak seperti badge */
+    padding: 10px; /* Memberikan jarak di dalam kartu */
+    overflow: hidden; /* Memastikan isi kartu tidak keluar */
+}
+
+.card1 img {
+    width: 100%; /* Gambar menggunakan lebar penuh kartu */
+    max-width: 736px; /* Gambar tidak melebihi 736px */
+    height: auto; /* Tinggi gambar disesuaikan otomatis */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    border-bottom: 2px solid #f0f0f0; /* Garis pemisah di bawah gambar */
+}
+
+.card1 h3 {
+    font-size: 1em; /* Ukuran font untuk nama dosen */
+    margin: 10px 0; /* Memberikan jarak atas dan bawah pada nama */
+}
+
+.badge {
+    background-color: #28a745; /* Warna latar belakang badge */
+    color: #fff; /* Warna teks badge */
+    font-size: 0.9em; /* Ukuran font badge */
+    padding: 5px 10px; /* Jarak di dalam badge */
+    border-radius: 5px; /* Membuat sudut badge melengkung */
+    position: absolute; /* Memposisikan badge di atas gambar */
+    top: 10px; /* Menempatkan badge di bagian atas */
+    left: 10px; /* Menempatkan badge di sebelah kiri */
+}
+
+/* Button Styles */
+.btn-lainnya-wrapper {
+    text-align: right; /* Menempatkan tombol di sebelah kanan */
+    margin-top: 20px; /* Memberikan jarak atas pada tombol */
+}
+
+.btn-lainnya {
+    background-color: #28a745; /* Warna tombol */
+    color: #fff; /* Warna teks tombol */
+    padding: 10px 20px; /* Jarak dalam tombol */
+    text-decoration: none; /* Menghapus garis bawah pada link */
+    font-size: 14px; /* Ukuran font tombol */
+    font-weight: bold; /* Menebalkan teks tombol */
+    border-radius: 5px; /* Membuat sudut tombol melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Bayangan pada tombol */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Efek transisi */
+}
+
+.btn-lainnya:hover {
+    background-color: #f5a623; /* Warna tombol saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar saat hover */
+}
+
+/* Media Queries for Responsiveness */
+
+/* Untuk layar kecil (ponsel) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Menyesuaikan ukuran font judul */
+    }
+
+    p {
+        font-size: 1em; /* Menyesuaikan ukuran font paragraf */
+    }
+
+    .card1 {
+        width: 150px; /* Lebar kartu lebih kecil pada layar ponsel */
+    }
+
+    .badge {
+        font-size: 0.8em; /* Menyesuaikan ukuran badge */
+        padding: 3px 8px; /* Menyesuaikan padding badge */
+    }
+
+    .btn-lainnya {
+        font-size: 12px; /* Menyesuaikan ukuran tombol */
+        padding: 8px 15px; /* Menyesuaikan padding tombol */
+    }
+
+    .card1 img {
+        width: 100%; /* Gambar menggunakan lebar penuh kartu */
+        height: auto; /* Tinggi gambar disesuaikan otomatis */
+    }
+}
+
+/* Untuk layar sedang (tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.3em; /* Menyesuaikan ukuran font untuk tablet */
+    }
+
+    p {
+        font-size: 1.1em; /* Menyesuaikan ukuran font untuk tablet */
+    }
+
+    .card1 {
+        width: 180px; /* Lebar kartu lebih kecil pada tablet */
+    }
+
+    .badge {
+        font-size: 0.85em; /* Menyesuaikan ukuran badge untuk tablet */
+        padding: 4px 9px; /* Menyesuaikan padding badge untuk tablet */
+    }
+}
+
+/* Untuk layar besar (desktop) */
+@media (min-width: 1025px) {
+    h1 {
+        font-size: 2.5em; /* Menjaga ukuran font judul pada layar besar */
+    }
+
+    p {
+        font-size: 1.2em; /* Menjaga ukuran font paragraf pada layar besar */
+    }
+
+    .card1 {
+        width: 200px; /* Lebar kartu default */
+    }
+
+    .badge {
+        font-size: 0.9em; /* Ukuran badge untuk layar besar */
+        padding: 5px 10px; /* Padding badge untuk layar besar */
+    }
+}
+.promo-section {
+    position: relative;
+    width: 100%;
+    padding: 40px 0; /* Tambahkan ruang di atas dan bawah section */
+    display: flex;
+    justify-content: center; /* Pusatkan konten secara horizontal */
+    align-items: flex-start; /* Mulai dari atas */
+    background-color: #f9f9f9; /* Opsional: Berikan warna latar untuk membedakan section */
+}
+
+.banner-wrapper {
+    width: 80%;
+    max-width: 1400px; /* Batasi ukuran maksimal slider */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+}
+
+.banner-slider {
+    display: flex;
+    width: 200%;
+    animation: slide-animation 8s infinite;
+}
+
+.banner-item {
+    width: 50%; /* Konsisten untuk dua slide */
+    flex-shrink: 0;
+    height: 200px; /* Ukuran tetap untuk slide pada layar besar */
+    box-sizing: border-box;
+    text-align: center;
+    background: linear-gradient(120deg, #ff8800, #ffaa00);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Pastikan gambar memenuhi area tanpa terdistorsi */
+    border-radius: 10px;
+}
+
+/* Media query untuk layar kecil */
+@media (max-width: 768px) {
+    .banner-item {
+        height: 120px; /* Gambar lebih pendek pada layar kecil */
+    }
+}
+
+@keyframes slide-animation {
+    0%, 50% {
+        transform: translateX(0);
+    }
+    55%, 100% {
+        transform: translateX(-50%);
+    }
+}

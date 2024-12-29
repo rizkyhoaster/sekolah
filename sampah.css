@@ -1,0 +1,418 @@
+/* Untuk perangkat dengan lebar layar maksimal 768px (tablet) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Navbar menjadi kolom */
+        align-items: center;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Link navigasi dalam satu kolom */
+        gap: 10px;
+        align-items: center;
+    }
+
+    .slider {
+        height: 200px; /* Ukuran slider lebih kecil */
+    }
+
+    .layanan-cards {
+        flex-direction: column; /* Layanan menjadi kolom */
+        align-items: center;
+    }
+
+    .layanan-cards .card {
+        width: 80%; /* Lebar layanan di perangkat kecil */
+    }
+}
+
+/* Untuk perangkat dengan lebar layar maksimal 480px (ponsel) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 5px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: 40px; /* Logo lebih kecil */
+    }
+
+    .logo h1 {
+        font-size: 20px; /* Font lebih kecil untuk judul */
+    }
+
+    .nav-links li a {
+        font-size: 14px; /* Font lebih kecil untuk link navigasi */
+    }
+
+    .slider {
+        height: 150px; /* Slider lebih kecil di ponsel */
+    }
+
+    .layanan-cards .card {
+        width: 90%; /* Lebar penuh hampir seluruh layar */
+        margin-bottom: 15px; /* Jarak antar card */
+    }
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: #054b1f;
+    color: #fff;
+}
+
+.top-bar {
+    text-align: right;
+    padding: 5px 15px;
+    font-size: 12px;
+    background: #022810;
+}
+
+/* Navbar Styles */
+/* Style for the Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.navbar .logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.navbar .logo p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin: 0 15px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .login-btn {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar .burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar .burger .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Media Query for mobile devices */
+@media screen and (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #333;
+        padding: 10px 0;
+    }
+
+    .navbar .nav-links.active {
+        display: block;
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+    }
+
+    .navbar .burger {
+        display: flex;
+    }
+}
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: #f7f7f7;
+}
+
+.left-section h2 {
+    font-size: 2rem;
+    color: #054b1f;
+}
+
+.left-section h3 {
+    color: #ffc107;
+    font-size: 1.5rem;
+}
+
+.left-section p {
+    color: #333;
+    margin-top: 10px;
+}
+
+.right-section .puasa-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Layanan Section */
+.layanan {
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.layanan-cards {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    width: 120px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.card i {
+    font-size: 2rem;
+    color: #054b1f;
+}
+
+.card p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+/* Slider Section */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1400px; /* Ubah lebar maksimal slider menjadi lebih kecil */
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 350px; /* Tetapkan tinggi slider */
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* Sesuaikan tinggi slides dengan slider */
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    height: 100%; /* Pastikan setiap slide mengikuti tinggi slider */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%; /* Memastikan gambar memenuhi ukuran slider */
+    object-fit: cover; /* Memastikan gambar tetap proporsional dalam ruang slider */
+    display: block;
+}
+
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+.beritakan {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Artikel Section */
+.articles, .agenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.article-card, .agenda-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    position: relative;
+}
+
+.article-card img, .agenda-card img {
+    width: 100%;
+    height: auto;
+}
+
+.label {
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 4px;
+}
+
+.date {
+    color: #888;
+    font-size: 12px;
+    margin: 10px;
+}
+
+h3 {
+    font-size: 16px;
+    margin: 10px;
+    color: #333;
+}
+
+.agenda-card {
+    position: relative;
+}
+
+.date-banner {
+    background: #f5a623;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .articles, .agenda {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .article-card, .agenda-card {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .article-card, .agenda-card {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    .label, .date-banner {
+        font-size: 12px;
+        padding: 4px;
+    }
+}

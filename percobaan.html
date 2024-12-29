@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Integrated CSS</title>
+    <style>
+        /* Reset Default Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #015601;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: #1558b0;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-right: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar .logo img:hover {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0;
+        }
+
+        .navbar .logo p {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+            transform: scale(1.1);
+        }
+
+        /* Dropdown Menu */
+        .nav-links li:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown a:hover {
+            background-color: #1a73e8;
+            color: #fff;
+        }
+
+        /* Login Button */
+        .login-btn {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+                margin-top: 20px;
+                background-color: #1a73e8;
+                border-radius: 5px;
+                overflow: hidden;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .login-btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #015601;
+            color: white;
+            padding: 30px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            text-align: left;
+        }
+
+        .footer-logo p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: white;
+        }
+
+        .footer-menu ul {
+            list-style: none;
+        }
+
+        .footer-menu ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .footer-menu ul li a:hover {
+            color: #f39c12;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-logo, .footer-menu {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <h1>My Website</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <button class="login-btn">Login</button>
+    </header>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <p>Footer Content here</p>
+            </div>
+            <div class="footer-menu">
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 My Website</p>
+        </div>
+    </footer>
+</body>
+</html>
