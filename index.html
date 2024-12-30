@@ -53,31 +53,54 @@
       padding: 0;
   }
 </style>
+<nav class="navbar">
+  <div class="logo">
+    <img src="gambar/logosekolah.jpg" alt="Logo STMIK" class="school-logo">
+    <div>
+      <h1>SDN</h1>
+      <p>38 Talang Ubi</p>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Beranda</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Artikel</a></li>
+    <li><a href="#">Informasi</a></li>
+    <li><a href="#">Kontak</a></li>
+  </ul>
+  <button class="login-btn">Login →</button>
 
-        <nav class="navbar">
-            <div class="logo">
-                <img src="gambar/logosekolah.jpg" alt="Logo STMIK" class="school-logo">
-                <div>
-                    <h1>SDN</h1>
-                    <p>38 Talang Ubi</p>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#">Beranda</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Artikel</a></li>
-                <li><a href="#">Informasi</a></li>
-                <li><a href="#">Kontak</a></li>
-            </ul>
-            <button class="login-btn">Login →</button>
+  <!-- Burger Icon -->
+  <div class="burger" id="burger" onclick="toggleBurger()">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
 
-            <!-- Burger Icon -->
-            <div class="burger" id="burger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-        </nav>
+    // Fungsi untuk toggle menu navigasi
+    function toggleBurger() {
+      navLinks.classList.toggle('open'); // Tambah/hapus kelas 'open'
+      burger.classList.toggle('active'); // Tambah/hapus kelas 'active' untuk animasi burger
+    }
+
+    // Event listener untuk ikon burger
+    burger.addEventListener('click', toggleBurger);
+
+    // Tutup menu jika area luar navigasi atau burger diklik
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('open'); // Tutup menu
+        burger.classList.remove('active'); // Reset animasi burger
+      }
+    });
+  });
+</script>
+
     </header>
 
     <!-- Main Section -->
