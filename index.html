@@ -41,7 +41,7 @@
       left: 0;
       width: 100%;
       height: 300px;
-      background: linear-gradient(135deg, #015601, #2575fc, #015601);
+      background: linear-gradient(135deg,  #f39c12,  #FFDB58);
       clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
       z-index: -1; /* Letakkan di belakang elemen lain */
   }
@@ -68,6 +68,7 @@
     <li><a href="#">Informasi</a></li>
     <li><a href="#">Kontak</a></li>
   </ul>
+  <!-- Tombol Login di luar nav-links -->
   <button class="login-btn">Login →</button>
 
   <!-- Burger Icon -->
@@ -81,6 +82,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
+    const loginBtn = document.querySelector('.login-btn'); // Menambahkan tombol login
 
     // Fungsi untuk toggle menu navigasi
     function toggleBurger() {
@@ -98,6 +100,29 @@
         burger.classList.remove('active'); // Reset animasi burger
       }
     });
+
+    // Menampilkan tombol login dalam menu burger ketika menu terbuka
+    // Hanya aktif pada layar kecil
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        loginBtn.style.display = ''; // Menampilkan tombol login pada layar besar
+        if (!navLinks.classList.contains('open')) {
+          navLinks.appendChild(loginBtn); // Pastikan tombol login di luar nav-links pada desktop
+        }
+      } else {
+        if (navLinks.classList.contains('open')) {
+          navLinks.appendChild(loginBtn); // Memasukkan tombol login ke dalam nav-links saat menu terbuka di mobile
+          loginBtn.style.display = 'block'; // Menampilkan tombol login saat menu burger terbuka
+        } else {
+          loginBtn.style.display = 'none'; // Menyembunyikan tombol login saat menu tertutup
+        }
+      }
+    });
+
+    // Inisialisasi saat halaman dimuat
+    if (window.innerWidth <= 768) {
+      loginBtn.style.display = 'none'; // Tombol login disembunyikan pada awalnya untuk tampilan mobile
+    }
   });
 </script>
 
@@ -362,10 +387,10 @@ layananCards.addEventListener('mouseleave', () => {
     <div class="banner-wrapper">
         <div class="banner-slider">
             <div class="banner-item">
-                <img src="gambar/download.jpeg" alt="Iklan Banner 1">
+                <img src="gambar/Captddsure-removebg-preview.png" alt="Iklan Banner 1">
             </div>
             <div class="banner-item">
-                <img src="gambar/download.jpeg" alt="Iklan Banner 2">
+                <img src="gambar/Captddsure-removebg-preview.png" alt="Iklan Banner 2">
             </div>
         </div>
     </div>
