@@ -1,17 +1,14 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif; /* Font yang bersih dan profesional */
-    background-color: #f4f4f4; /* Warna latar belakang yang lembut */
-    color: #333; /* Warna teks yang nyaman untuk dibaca */
-    margin: 0; /* Menghapus margin default */
-    padding: 0; /* Menghapus padding default */
-    line-height: 1.6; /* Meningkatkan keterbacaan */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Mengisi layar penuh */
-    overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
 }
 
 /* Efek tambahan untuk memberikan tampilan elegan */
