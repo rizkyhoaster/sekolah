@@ -9,6 +9,11 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
+    color: #333; /* Warna teks agar tetap jelas di atas latar belakang putih */
+}
+/* Menambahkan aturan untuk memastikan elemen lainnya tidak mempengaruhi latar belakang */
+.promo-section, .banner-wrapper, .banner-slider, .banner-item {
+    background-color: #ffffff; /* Pastikan elemen-elemen ini memiliki latar belakang putih */
 }
 /* Navbar */
 .navbar {
