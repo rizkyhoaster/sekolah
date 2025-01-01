@@ -293,13 +293,15 @@ p {
 
 .banner-slider {
     display: flex;
-    animation: slide 10s infinite; /* Animasi untuk slider */
+    animation: slide 10s infinite linear; /* Animasi untuk slider */
+    transition: transform 1s ease-in-out;
 }
 
 .banner-item {
     flex: 0 0 50%; /* Setiap banner mengambil 50% lebar slider */
     padding: 10px;
     box-sizing: border-box;
+    opacity: 1; /* Gambar tetap terlihat */
 }
 
 .banner-item img {
@@ -309,31 +311,31 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Animasi */
+/* Animasi slide */
 @keyframes slide {
     0% {
-        transform: translateX(0); /* Awal slide */
+        transform: translateX(0); /* Posisi pertama */
     }
     25% {
-        transform: translateX(0); /* Tetap di posisi awal */
+        transform: translateX(0); /* Tetap pada gambar pertama */
     }
     30% {
         transform: translateX(-50%); /* Geser ke kiri (slide kedua) */
     }
     55% {
-        transform: translateX(-50%); /* Tetap di slide kedua */
+        transform: translateX(-50%); /* Tetap pada gambar kedua */
     }
     60% {
         transform: translateX(-100%); /* Geser ke kiri (slide ketiga) */
     }
     85% {
-        transform: translateX(-100%); /* Tetap di slide ketiga */
+        transform: translateX(-100%); /* Tetap pada gambar ketiga */
     }
     90% {
         transform: translateX(-150%); /* Geser ke kiri (slide keempat) */
     }
     100% {
-        transform: translateX(-150%); /* Tetap di slide keempat */
+        transform: translateX(0); /* Kembali ke posisi awal */
     }
 }
 
