@@ -338,7 +338,12 @@ p {
         transform: translateX(0); /* Kembali ke posisi awal */
     }
 }
-
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* Heading styling */
 h2 {
     color: #ffc107;
