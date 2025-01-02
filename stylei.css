@@ -390,7 +390,7 @@ p {
 
 .ukm-item {
     text-align: center;
-    width: 250px; /* Ukuran item */
+    width: 280px; /* Ukuran item */
     flex-shrink: 0; /* Menjaga elemen tetap dalam satu baris */
     scroll-snap-align: center; /* Posisi snap di tengah */
     background-color: #ffffff; /* Warna latar item */
@@ -432,7 +432,7 @@ p {
     }
 
     .ukm-item {
-        width: 200px;
+        width: 250px;
     }
 
     .ukm-item span {
@@ -453,7 +453,6 @@ p {
         font-size: 0.8rem;
     }
 }
-
 /* Galeri Kegiatan Section */
 .galeri-kegiatan {
     background-color: #ffffff;
