@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li><a href="#">Profile</a></li>
             <li><a href="#">Artikel</a></li>
             <li><a href="#">Informasi</a></li>
-            <li><a href="#">Kontak</a></li>
+            <li><a href="contac.php">Kontak</a></li>
         </ul>
         <button class="login-btn">Login →</button>
         <div class="burger" id="burger" onclick="toggleBurger()">
