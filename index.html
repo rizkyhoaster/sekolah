@@ -64,7 +64,16 @@
   <ul class="nav-links">
     <li><a href="#">Beranda</a></li>
     <li><a href="#">Profile</a></li>
-    <li><a href="#">Artikel</a></li>
+    <!-- Artikel dengan submenu -->
+    <li class="dropdown">
+  <span class="dropdown-toggle">Berita ▾</span>
+  <ul class="submenu">
+    <li><a href="articel.php">Artikel </a></li>
+    <li><a href="sub-artikel2.php">Agenda</a></li>
+  </ul>
+</li>
+
+
     <li><a href="#">Informasi</a></li>
     <li><a href="contac.php">Kontak</a></li>
   </ul>
@@ -82,12 +91,13 @@
   document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
-    const loginBtn = document.querySelector('.login-btn'); // Menambahkan tombol login
+    const loginBtn = document.querySelector('.login-btn');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
     // Fungsi untuk toggle menu navigasi
     function toggleBurger() {
-      navLinks.classList.toggle('open'); // Tambah/hapus kelas 'open'
-      burger.classList.toggle('active'); // Tambah/hapus kelas 'active' untuk animasi burger
+      navLinks.classList.toggle('open'); // Menambah/hapus kelas 'open'
+      burger.classList.toggle('active'); // Menambah/hapus kelas 'active' untuk animasi burger
     }
 
     // Event listener untuk ikon burger
@@ -99,6 +109,19 @@
         navLinks.classList.remove('open'); // Tutup menu
         burger.classList.remove('active'); // Reset animasi burger
       }
+    });
+
+    // Menangani klik pada dropdown submenu untuk tampilan mobile
+    dropdowns.forEach(dropdown => {
+      const dropdownLink = dropdown.querySelector('.dropdown-toggle'); // Mengambil link menu dropdown
+      const submenu = dropdown.querySelector('.submenu'); // Mengambil submenu
+      dropdownLink.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { // Hanya berlaku pada layar kecil
+          e.preventDefault(); // Menghindari pengalihan halaman
+          submenu.classList.toggle('open'); // Toggle submenu saat diklik
+          e.stopPropagation(); // Mencegah klik dilanjutkan ke area luar dropdown
+        }
+      });
     });
 
     // Menampilkan tombol login dalam menu burger ketika menu terbuka
