@@ -23,9 +23,16 @@ body {
     background-color: #fff;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1000;
-  }
+    position: fixed; /* Membuat navbar tetap di tempat */
+    top: 0; /* Menempatkan navbar di atas */
+    left: 0; /* Menempatkan navbar di awal horizontal */
+    width: 100%; /* Memastikan lebar navbar penuh */
+    z-index: 1000; /* Memastikan navbar di atas elemen lainnya */
+}
+/* Tambahkan margin-top pada elemen pertama halaman agar konten tidak tertutup navbar */
+body {
+    padding-top: 70px; /* Sesuaikan dengan tinggi navbar */
+}
   
   .logo {
     display: flex;
@@ -45,7 +52,7 @@ body {
   
   .logo p {
     font-size: 14px;
-    color: #666;
+    color: #333;
   }
   
   /* Navbar Links */
@@ -81,6 +88,74 @@ body {
   
   .login-btn:hover {
     background-color: #e67e22; /* Efek hover tombol login */
+  }
+/* Gaya dasar untuk dropdown dan submenu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Submenu akan disembunyikan secara default */
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+    left: 0;
+  }
+  
+  /* Submenu muncul ketika dropdown berada dalam kondisi hover di desktop */
+  .dropdown:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li {
+    padding: 8px 12px;
+    list-style: none;
+  }
+  
+  .submenu li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .submenu li a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Responsif untuk layar lebih kecil */
+  @media screen and (max-width: 768px) {
+    .dropdown {
+      display: block;
+      width: 100%;
+    }
+  
+    .submenu {
+      position: static;
+      display: none; /* Menyembunyikan submenu secara default */
+      width: 100%;
+    }
+  
+    .dropdown.open .submenu {
+      display: block; /* Menampilkan submenu saat dropdown dibuka */
+    }
+  
+    .submenu li {
+      padding: 12px 20px; /* Lebih besar padding untuk kenyamanan */
+    }
+  }
+  
+  
+  /* Responsif untuk layar sangat kecil (seperti ponsel) */
+  @media screen and (max-width: 480px) {
+    .submenu li {
+      padding: 10px 15px; /* Padding yang lebih kecil di layar kecil */
+    }
+  
+    .dropdown a {
+      font-size: 16px; /* Mengubah ukuran font di menu dropdown */
+    }
   }
   
   /* Burger Icon */
@@ -203,34 +278,47 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 /* Slider Section */
+/* Mengatur area slider agar memiliki ukuran penuh, terpusat, dan memberikan jarak dari navbar */
 .slider {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    height: 350px;
+    position: relative; /* Untuk memposisikan elemen secara relatif terhadap konten */
+    width: 100%; /* Memastikan slider menggunakan lebar penuh */
+    max-width: 1400px; /* Batas maksimal lebar slider */
+    margin: auto; /* Menjadikan slider berada di tengah halaman */
+    overflow: hidden; /* Memotong elemen yang berada di luar batas slider */
+    border-radius: 10px; /* Membuat sudut slider melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Memberikan efek bayangan */
+    height: 400px; /* Tinggi tetap untuk slider */
+    margin-top: 70px; /* Memberikan jarak dari navbar fixed agar slider tidak terpotong */
 }
 
+/* Mengatur tata letak elemen slide dalam bentuk flex container */
 .slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100%;
+    display: flex; /* Menjadikan elemen anak sejajar secara horizontal */
+    transition: transform 0.5s ease-in-out; /* Animasi saat berganti slide */
+    height: 100%; /* Memastikan tinggi kontainer sama dengan slider */
 }
 
+/* Mengatur masing-masing slide */
 .slide {
-    min-width: 100%;
-    box-sizing: border-box;
-    height: 100%;
+    min-width: 100%; /* Memastikan setiap slide menggunakan lebar penuh */
+    box-sizing: border-box; /* Memasukkan padding dan border ke dalam ukuran elemen */
+    height: 100%; /* Memastikan tinggi slide sama dengan slider */
 }
 
+/* Mengatur gambar dalam slide agar memenuhi area tanpa terdistorsi */
 .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Memastikan gambar mengisi seluruh lebar slide */
+    height: 100%; /* Memastikan gambar mengisi seluruh tinggi slide */
+    object-fit: cover; /* Memotong gambar agar sesuai dengan ukuran tanpa mengubah proporsi */
 }
+
+/* Responsif untuk layar lebih kecil */
+@media (max-width: 768px) {
+    .slider {
+        margin-top: 60px; /* Menyesuaikan jarak slider dengan navbar pada perangkat kecil */
+    }
+}
+
 
 /* Navigation Buttons */
 .prev, .next {
