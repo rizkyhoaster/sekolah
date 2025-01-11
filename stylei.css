@@ -100,15 +100,15 @@
   }
   
   
-  /*daftar guru*/
+/* Daftar Guru dan Pimpinan */
 .daftar-guru {
-    background-color: #ffc107; /* Warna latar belakang untuk daftar guru */
-    padding: 20px; /* Memberikan jarak di dalam elemen */
+    background-color: #ffc107; /* Warna latar belakang */
+    padding: 40px; /* Memberikan jarak di dalam elemen */
     text-align: center; /* Menyelaraskan teks ke tengah */
 }
 
 .containeri {
-    max-width: 1200px; /* Batas lebar maksimum */
+    max-width: 1200px; /* Lebar maksimum container */
     margin: 0 auto; /* Memusatkan elemen */
     padding: 20px; /* Memberikan jarak di dalam elemen */
 }
@@ -116,13 +116,14 @@
 h1 {
     font-size: 2.5em; /* Ukuran font judul */
     color: #fff; /* Warna teks */
+    font-weight: bold; /* Menebalkan teks */
     margin-bottom: 10px; /* Memberikan jarak di bawah judul */
 }
 
 p {
-    font-size: 1.2em; /* Ukuran font untuk paragraf */
+    font-size: 1.2em; /* Ukuran font paragraf */
     color: #fff; /* Warna teks */
-    margin-bottom: 20px; /* Memberikan jarak di bawah paragraf */
+    margin-bottom: 30px; /* Memberikan jarak di bawah paragraf */
 }
 
 /* Card List Styles */
@@ -131,14 +132,15 @@ p {
     flex-wrap: nowrap; /* Mencegah elemen membungkus ke bawah */
     justify-content: flex-start; /* Menyusun elemen mulai dari kiri */
     overflow-x: auto; /* Scroll horizontal */
-    gap: 20px; /* Jarak antar elemen */
+    gap: 10px; /* Jarak antar elemen */
     padding: 10px 0; /* Memberikan jarak atas dan bawah pada list */
     scroll-behavior: smooth; /* Perpindahan scroll yang halus */
 }
 
 /* Scrollbar Styles */
-.card1-list:hover::-webkit-scrollbar {
-    display: block; /* Scrollbar hanya muncul saat disentuh */
+.card1-list::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar */
+    background-color: #ffe8a1; /* Warna latar scrollbar */
 }
 
 .card1-list::-webkit-scrollbar-thumb {
@@ -148,29 +150,25 @@ p {
 
 /* Card Styles */
 .card1 {
-    background-color: #fff; /* Warna latar belakang kartu */
+    background-color: rgba(255, 255, 255, 0); /* Warna latar belakang kartu transparan */
+    border: 5px solid #28a745;  /* Border lebih tebal */
     border-radius: 10px; /* Membuat sudut kartu melengkung */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada kartu */
-    text-align: center; /* Menyelaraskan teks di tengah kartu */
+    text-align: center; /* Menyelarangkan teks di tengah kartu */
     width: 200px; /* Lebar kartu */
+    height: 300px; /* Menambah tinggi kartu agar border lebih tinggi */
     flex-shrink: 0; /* Mencegah kartu mengecil */
     position: relative; /* Untuk posisi elemen anak seperti badge */
-    padding: 10px; /* Memberikan jarak di dalam kartu */
     overflow: hidden; /* Memastikan isi kartu tidak keluar */
 }
 
 .card1 img {
     width: 100%; /* Gambar menggunakan lebar penuh kartu */
-    max-width: 736px; /* Gambar tidak melebihi 736px */
-    height: auto; /* Tinggi gambar disesuaikan otomatis */
-    object-fit: cover; /* Menjaga proporsi gambar */
-    border-bottom: 2px solid #f0f0f0; /* Garis pemisah di bawah gambar */
+    height: 120%; /* Gambar menjadi lebih tinggi */
+    object-fit: cover; /* Menjaga proporsi gambar agar menutupi seluruh kartu */
+    border-radius: 10px; /* Menambahkan border-radius ke gambar agar sudutnya melengkung */
 }
 
-.card1 h3 {
-    font-size: 1em; /* Ukuran font untuk nama dosen */
-    margin: 10px 0; /* Memberikan jarak atas dan bawah pada nama */
-}
 
 .badge {
     background-color: #28a745; /* Warna latar belakang badge */
@@ -181,8 +179,8 @@ p {
     position: absolute; /* Memposisikan badge di atas gambar */
     top: 10px; /* Menempatkan badge di bagian atas */
     left: 10px; /* Menempatkan badge di sebelah kiri */
+    font-weight: bold; /* Menebalkan teks badge */
 }
-
 /* Button Styles */
 .btn-lainnya-wrapper {
     text-align: right; /* Menempatkan tombol di sebelah kanan */
@@ -219,7 +217,7 @@ p {
     }
 
     .card1 {
-        width: 150px; /* Lebar kartu lebih kecil pada layar ponsel */
+        width: 200px; /* Lebar kartu lebih kecil pada layar ponsel */
     }
 
     .badge {
@@ -230,11 +228,6 @@ p {
     .btn-lainnya {
         font-size: 12px; /* Menyesuaikan ukuran tombol */
         padding: 8px 15px; /* Menyesuaikan padding tombol */
-    }
-
-    .card1 img {
-        width: 100%; /* Gambar menggunakan lebar penuh kartu */
-        height: auto; /* Tinggi gambar disesuaikan otomatis */
     }
 }
 
@@ -277,6 +270,7 @@ p {
         padding: 5px 10px; /* Padding badge untuk layar besar */
     }
 }
+
 /* Promo Section */
 .promo-section {
     width: 100%;
@@ -308,7 +302,7 @@ p {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 /* Animasi slide */
@@ -381,7 +375,7 @@ p {
 
 .ukm-container {
     display: flex; /* Membuat elemen saling berbaris horizontal */
-    gap: 20px;
+    gap: 15px;
     overflow-x: auto; /* Scroll horizontal diaktifkan */
     padding-bottom: 10px; /* Ruang ekstra untuk scrollbar */
     white-space: nowrap; /* Menjaga elemen tetap dalam satu baris */
@@ -394,17 +388,16 @@ p {
     flex-shrink: 0; /* Menjaga elemen tetap dalam satu baris */
     scroll-snap-align: center; /* Posisi snap di tengah */
     background-color: #ffffff; /* Warna latar item */
-    border: 2px solid #ffc107; /* Border kuning */
+    border: 3px solid #ffc107; /* Membuat border lebih tebal */
     border-radius: 8px;
     overflow: hidden; /* Menjaga gambar tetap rapi */
 }
 
-/* Membatasi ukuran gambar agar tidak terlalu besar */
+/* Membatasi ukuran gambar agar tidak terlalu besar dan sedikit lebih tinggi */
 .ukm-item img {
     width: 100%;
-    height: auto;
-    max-height: 250px;
-    border-bottom: 3px solid #ffc107;
+    height: 280px; /* Menambah tinggi gambar */
+    border-bottom: 3px solid #ffc107; /* Border bawah pada gambar */
     transition: transform 0.3s ease-in-out;
     object-fit: cover;
 }
@@ -446,7 +439,7 @@ p {
     }
 
     .ukm-item {
-        width: 180px;
+        width: 210px;
     }
 
     .ukm-item span {
@@ -560,11 +553,11 @@ a.lihat-selengkapnya:hover {
     gap: 2rem;
     flex-wrap: nowrap; /* Tidak membungkus elemen */
     padding: 2rem;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     overflow-x: auto; /* Scroll horizontal */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling untuk perangkat sentuh */
     border-radius: 15px; /* Opsional: sedikit lengkung pada kontainer */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Opsional: menambahkan bayangan */
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* Opsional: menambahkan bayangan */
     margin: 0 auto; /* Agar kontainer tetap berada di tengah */
 }
 
@@ -650,15 +643,16 @@ a.lihat-selengkapnya:hover {
     text-align: center; /* Memusatkan semua konten */
     padding: 20px; /* Memberikan ruang di sekitar bagian ini */
     background-color: #ffffff; /* Warna latar belakang putih */
+    margin-top: 20px; /* Memberikan jarak atas pada seluruh bagian */
 }
 
 /* Kontainer untuk logo atau link terkait */
 .links-container {
     display: flex; /* Mengatur elemen di dalamnya secara horizontal */
     justify-content: center; /* Memastikan elemen tetap berada di tengah */
-    gap: 20px; /* Memberikan jarak antar elemen */
+    gap: 60px; /* Menambah jarak antar elemen (logo-link) */
     flex-wrap: wrap; /* Membungkus elemen jika ruang tidak cukup */
-    display: inline-block; /* Memastikan tautan mengikuti dimensi gambar */
+    margin: 0 auto; /* Memusatkan kontainer dan memberikan jarak kiri dan kanan */
 }
 
 /* Logo-link terkait */
@@ -679,7 +673,7 @@ a.lihat-selengkapnya:hover {
     /* Menjaga agar logo tetap di tengah dan responsif pada layar kecil */
     .links-container {
         justify-content: center; /* Memastikan logo tetap terpusat */
-        gap: 15px; /* Mengurangi jarak antar logo */
+        gap: 20px; /* Mengurangi jarak antar logo sedikit untuk layar kecil */
     }
 
     /* Mengatur ukuran gambar logo agar lebih responsif */
