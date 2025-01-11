@@ -1,0 +1,89 @@
+/* Styling untuk section utama */
+.section.articles {
+    padding: 20px; /* Memberikan jarak pada konten */
+    text-align: center; /* Konten berada di tengah */
+    background-color: #f9f9f9; /* Warna latar belakang abu terang */
+}
+
+/* Styling judul di section */
+.section.articles h2 {
+    font-size: 24px; /* Ukuran huruf untuk judul */
+    color: #006400; /* Warna hijau tema */
+    margin-bottom: 10px; /* Memberikan jarak bawah pada judul */
+}
+
+/* Styling deskripsi di section */
+.section.articles p {
+    font-size: 16px; /* Ukuran huruf deskripsi */
+    color: #555; /* Warna abu untuk teks */
+    margin-bottom: 20px; /* Memberikan jarak bawah */
+}
+
+/* Kontainer untuk kartu artikel */
+.articles-container {
+    display: flex; /* Menggunakan flexbox untuk tata letak */
+    flex-wrap: wrap; /* Supaya konten bisa turun ke baris baru */
+    gap: 20px; /* Jarak antar kartu artikel */
+    justify-content: center; /* Pusatkan konten secara horizontal */
+}
+
+/* Styling kartu artikel */
+.article-card {
+    background-color: #fff; /* Warna latar kartu putih */
+    border: 1px solid #ddd; /* Batas abu terang */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+    width: 300px; /* Lebar tetap kartu */
+    overflow: hidden; /* Potong elemen yang keluar */
+    transition: transform 0.3s ease; /* Animasi saat hover */
+}
+
+/* Efek zoom saat hover */
+.article-card:hover {
+    transform: scale(1.05); /* Zoom sedikit */
+}
+
+/* Styling untuk gambar di kartu artikel */
+.image-wrapper {
+    position: relative; /* Untuk elemen dalam posisi absolut */
+    width: 100%; /* Lebar penuh */
+    height: 180px; /* Tinggi tetap */
+    overflow: hidden; /* Potong elemen yang keluar */
+}
+
+.image-wrapper img {
+    width: 100%; /* Gambar melebar sesuai kontainer */
+    height: 100%; /* Tinggi penuh */
+    object-fit: cover; /* Crop gambar agar sesuai */
+}
+
+/* Styling tag berita */
+.tag {
+    position: absolute; /* Posisi absolut dalam wrapper */
+    top: 10px; /* Jarak dari atas */
+    left: 10px; /* Jarak dari kiri */
+    background-color: #006400; /* Warna hijau tema */
+    color: #fff; /* Teks putih */
+    font-size: 12px; /* Ukuran font kecil */
+    padding: 5px 10px; /* Jarak dalam */
+    border-radius: 4px; /* Sudut melengkung */
+}
+
+/* Styling informasi artikel */
+.article-info {
+    padding: 15px; /* Jarak dalam kontainer informasi */
+}
+
+/* Styling tanggal artikel */
+.article-info .date {
+    font-size: 12px; /* Ukuran font kecil */
+    color: #888; /* Warna abu terang */
+    margin-bottom: 10px; /* Jarak bawah dari teks lain */
+}
+
+/* Styling judul artikel */
+.article-info h3 {
+    font-size: 16px; /* Ukuran font sedang */
+    color: #333; /* Warna abu gelap */
+    margin: 0; /* Hilangkan margin default */
+}
