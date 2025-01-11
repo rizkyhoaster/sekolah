@@ -467,6 +467,9 @@ p {
     text-align: center;
     width: 100%; /* Sesuaikan dengan grid */
     border: 5px solid #28a745;  /* Border lebih tebal */
+    position: relative; /* Menambahkan posisi relatif untuk kontrol posisi anak-anak */
+    overflow: hidden;   /* Menghindari gambar melampaui batas container saat di-hover */
+    border-radius: 0;   /* Pastikan container tidak memiliki lengkungan */
 }
 
 .galeri-item img {
