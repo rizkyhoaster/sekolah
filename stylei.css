@@ -132,7 +132,7 @@ p {
     flex-wrap: nowrap; /* Mencegah elemen membungkus ke bawah */
     justify-content: flex-start; /* Menyusun elemen mulai dari kiri */
     overflow-x: auto; /* Scroll horizontal */
-    gap: 10px; /* Jarak antar elemen */
+    gap: 15px; /* Jarak antar elemen */
     padding: 10px 0; /* Memberikan jarak atas dan bawah pada list */
     scroll-behavior: smooth; /* Perpindahan scroll yang halus */
 }
@@ -466,6 +466,7 @@ p {
 .galeri-item {
     text-align: center;
     width: 100%; /* Sesuaikan dengan grid */
+    border: 5px solid #28a745;  /* Border lebih tebal */
 }
 
 .galeri-item img {
@@ -475,6 +476,8 @@ p {
     object-fit: cover; /* Mengisi kotak tanpa distorsi */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk tampilan lebih menarik */
     transition: transform 0.3s ease-in-out; /* Efek transisi saat hover */
+    border-bottom: 3px solid #28a745; /* Border bawah pada gambar */
+    margin-bottom: 0; /* Menghilangkan jarak bawah pada gambar */
 }
 
 /* Hover efek untuk memperbesar gambar */
@@ -484,13 +487,14 @@ p {
 
 /* Judul atau keterangan di bawah gambar */
 .galeri-item span {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #333;
+    display: block;  /* Mengubah span menjadi elemen block agar bisa mengambil seluruh lebar */
+    margin-top: 0;  /* Menghilangkan jarak atas agar lebih rapat dengan gambar */
+    font-weight: bold;  /* Membuat teks menjadi tebal */
+    color: #333;  /* Mengubah warna teks menjadi putih untuk kontras dengan latar belakang hijau */
+    background-color: #28a745;  /* Memberikan latar belakang warna hijau */
+    padding: 10px;  /* Menambahkan padding di dalam span agar teks tidak terlalu rapat dengan tepi */
+    width: 100%;    /* Mengatur lebar span menjadi 100% dari lebar elemen induk */
 }
-
-
 /* Galeri Video Section */
 .galeri-video {
     background-color: #ffffff;
