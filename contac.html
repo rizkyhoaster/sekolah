@@ -36,66 +36,99 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="stylei.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="gambar/logosekolah.jpg" alt="Logo STMIK" class="school-logo">
-            <div>
-                <h1>SDN</h1>
-                <p>38 Talang Ubi</p>
-            </div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="beranda.php">Beranda</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Artikel</a></li>
-            <li><a href="#">Informasi</a></li>
-            <li><a href="#">Kontak</a></li>
-        </ul>
-        <button class="login-btn">Login →</button>
-        <div class="burger" id="burger" onclick="toggleBurger()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </nav>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const burger = document.querySelector('.burger');
-            const navLinks = document.querySelector('.nav-links');
-            const loginBtn = document.querySelector('.login-btn');
-        
-            function toggleBurger() {
-                navLinks.classList.toggle('open');
-                burger.classList.toggle('active');
-            }
+   <nav class="navbar">
+  <div class="logo">
+    <img src="gambar/logosekolah.jpg" alt="Logo STMIK" class="school-logo">
+    <div>
+      <h1>SDN</h1>
+      <p>SDN 38 Talang Ubi</p>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Beranda</a></li>
+    <li><a href="#">Profile</a></li>
+    <!-- Artikel dengan submenu -->
+    <li class="dropdown">
+  <span class="dropdown-toggle">Berita ▾</span>
+  <ul class="submenu">
+    <li><a href="articel.html">Artikel </a></li>
+    <li><a href="sub-artikel2.php">Agenda</a></li>
+  </ul>
+</li>
+    <li><a href="#">Informasi</a></li>
+    <li><a href="contac.html">Kontak</a></li>
+  </ul>
+  <!-- Tombol Login di luar nav-links -->
+  <button class="login-btn">Login</button>
 
-            burger.addEventListener('click', toggleBurger);
-        
-            document.addEventListener('click', (e) => {
-                if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
-                    navLinks.classList.remove('open');
-                    burger.classList.remove('active');
-                }
-            });
+  <!-- Burger Icon -->
+  <div class="burger" id="burger" onclick="toggleBurger()">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    const loginBtn = document.querySelector('.login-btn');
+    const dropdowns = document.querySelectorAll('.dropdown');
 
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
-                    loginBtn.style.display = '';
-                } else {
-                    if (navLinks.classList.contains('open')) {
-                        navLinks.appendChild(loginBtn);
-                        loginBtn.style.display = 'block';
-                    } else {
-                        loginBtn.style.display = 'none';
-                    }
-                }
-            });
+    // Fungsi untuk toggle menu navigasi
+    function toggleBurger() {
+      navLinks.classList.toggle('open'); // Menambah/hapus kelas 'open'
+      burger.classList.toggle('active'); // Menambah/hapus kelas 'active' untuk animasi burger
+    }
 
-            if (window.innerWidth <= 768) {
-                loginBtn.style.display = 'none';
-            }
-        });
-    </script>
+    // Event listener untuk ikon burger
+    burger.addEventListener('click', toggleBurger);
+
+    // Tutup menu jika area luar navigasi atau burger diklik
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('open'); // Tutup menu
+        burger.classList.remove('active'); // Reset animasi burger
+      }
+    });
+
+    // Menangani klik pada dropdown submenu untuk tampilan mobile
+    dropdowns.forEach(dropdown => {
+      const dropdownLink = dropdown.querySelector('.dropdown-toggle'); // Mengambil link menu dropdown
+      const submenu = dropdown.querySelector('.submenu'); // Mengambil submenu
+      dropdownLink.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { // Hanya berlaku pada layar kecil
+          e.preventDefault(); // Menghindari pengalihan halaman
+          submenu.classList.toggle('open'); // Toggle submenu saat diklik
+          e.stopPropagation(); // Mencegah klik dilanjutkan ke area luar dropdown
+        }
+      });
+    });
+
+    // Menampilkan tombol login dalam menu burger ketika menu terbuka
+    // Hanya aktif pada layar kecil
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        loginBtn.style.display = ''; // Menampilkan tombol login pada layar besar
+        if (!navLinks.classList.contains('open')) {
+          navLinks.appendChild(loginBtn); // Pastikan tombol login di luar nav-links pada desktop
+        }
+      } else {
+        if (navLinks.classList.contains('open')) {
+          navLinks.appendChild(loginBtn); // Memasukkan tombol login ke dalam nav-links saat menu terbuka di mobile
+          loginBtn.style.display = 'block'; // Menampilkan tombol login saat menu burger terbuka
+        } else {
+          loginBtn.style.display = 'none'; // Menyembunyikan tombol login saat menu tertutup
+        }
+      }
+    });
+
+    // Inisialisasi saat halaman dimuat
+    if (window.innerWidth <= 768) {
+      loginBtn.style.display = 'none'; // Tombol login disembunyikan pada awalnya untuk tampilan mobile
+    }
+  });
+</script>
 
     <section class="map-section">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.267633492146!2d103.81610037421547!3d-3.2837034410700974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3a6c80f8bcdf31%3A0xb8ee89a6a3ed3d2a!2sSD%20Negeri%2038%20Talang%20Ubi!5e0!3m2!1sid!2sid!4v1735831309421!5m2!1sid!2sid"
