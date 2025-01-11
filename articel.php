@@ -1,0 +1,166 @@
+<?php
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page</title>
+  <link rel="stylesheet" href="artikel dan agenda.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="stylei.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="logo">
+    <img src="gambar/logosekolah.jpg" alt="Logo STMIK" class="school-logo">
+    <div>
+      <h1>SDN</h1>
+      <p>38 Talang Ubi</p>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Beranda</a></li>
+    <li><a href="#">Profile</a></li>
+    <!-- Artikel dengan submenu -->
+    <li class="dropdown">
+  <span class="dropdown-toggle">Berita ▾</span>
+  <ul class="submenu">
+    <li><a href="articel.php">Artikel </a></li>
+    <li><a href="sub-artikel2.php">Agenda</a></li>
+  </ul>
+</li>
+    <li><a href="#">Informasi</a></li>
+    <li><a href="contac.php">Kontak</a></li>
+  </ul>
+  <!-- Tombol Login di luar nav-links -->
+  <button class="login-btn">Login →</button>
+
+  <!-- Burger Icon -->
+  <div class="burger" id="burger" onclick="toggleBurger()">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
+    const loginBtn = document.querySelector('.login-btn');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Fungsi untuk toggle menu navigasi
+    function toggleBurger() {
+      navLinks.classList.toggle('open'); // Menambah/hapus kelas 'open'
+      burger.classList.toggle('active'); // Menambah/hapus kelas 'active' untuk animasi burger
+    }
+
+    // Event listener untuk ikon burger
+    burger.addEventListener('click', toggleBurger);
+
+    // Tutup menu jika area luar navigasi atau burger diklik
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('open'); // Tutup menu
+        burger.classList.remove('active'); // Reset animasi burger
+      }
+    });
+
+    // Menangani klik pada dropdown submenu untuk tampilan mobile
+    dropdowns.forEach(dropdown => {
+      const dropdownLink = dropdown.querySelector('.dropdown-toggle'); // Mengambil link menu dropdown
+      const submenu = dropdown.querySelector('.submenu'); // Mengambil submenu
+      dropdownLink.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) { // Hanya berlaku pada layar kecil
+          e.preventDefault(); // Menghindari pengalihan halaman
+          submenu.classList.toggle('open'); // Toggle submenu saat diklik
+          e.stopPropagation(); // Mencegah klik dilanjutkan ke area luar dropdown
+        }
+      });
+    });
+
+    // Menampilkan tombol login dalam menu burger ketika menu terbuka
+    // Hanya aktif pada layar kecil
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        loginBtn.style.display = ''; // Menampilkan tombol login pada layar besar
+        if (!navLinks.classList.contains('open')) {
+          navLinks.appendChild(loginBtn); // Pastikan tombol login di luar nav-links pada desktop
+        }
+      } else {
+        if (navLinks.classList.contains('open')) {
+          navLinks.appendChild(loginBtn); // Memasukkan tombol login ke dalam nav-links saat menu terbuka di mobile
+          loginBtn.style.display = 'block'; // Menampilkan tombol login saat menu burger terbuka
+        } else {
+          loginBtn.style.display = 'none'; // Menyembunyikan tombol login saat menu tertutup
+        }
+      }
+    });
+
+    // Inisialisasi saat halaman dimuat
+    if (window.innerWidth <= 768) {
+      loginBtn.style.display = 'none'; // Tombol login disembunyikan pada awalnya untuk tampilan mobile
+    }
+  });
+</script>
+
+<section class="section articles">
+    <h2>Artikel Terbaru</h2>
+    <p>Aktivitas terbaru dari Kampus Merdeka</p>
+    <div class="articles-container">
+        <div class="article-card">
+            <div class="image-wrapper">
+                <span class="tag">Berita</span>
+                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg"alt="Artikel 1">
+            </div>
+            <div class="article-info">
+                <p class="date">2024-12-19 18:55:53</p>
+                <h3>STMIK Syaikh Zainuddin NW Anjani Gelar Wisuda ke 13 di Mataram</h3>
+            </div>
+        </div>
+        <div class="article-card">
+            <div class="image-wrapper">
+                <span class="tag">Berita</span>
+                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Artikel 2">
+            </div>
+            <div class="article-info">
+                <p class="date">2024-05-19 20:39:42</p>
+                <h3>STMIK Syaikh Zainuddin NW Anjani Laksanakan Uji Publik Panitia Seleksi SATGAS PPKS</h3>
+            </div>
+        </div>
+        <div class="article-card">
+            <div class="image-wrapper">
+                <span class="tag">Berita</span>
+                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Artikel 3">
+            </div>
+            <div class="article-info">
+                <p class="date">2024-01-18 12:54:21</p>
+                <h3>STMIK Syaikh Zainuddin NW Anjani Gelar Wisuda ke -XII</h3>
+            </div>
+        </div>
+        <div class="article-card">
+            <div class="image-wrapper">
+                <span class="tag">Berita</span>
+                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Artikel 4">
+            </div>
+            <div class="article-info">
+                <p class="date">2022-04-06 11:06:14</p>
+                <h3>Contoh Website Sekolah yang Bisa Jadi Inspirasi</h3>
+            </div>
+        </div>
+        <div class="article-card">
+            <div class="image-wrapper">
+                <span class="tag">Berita</span>
+                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Artikel 5">
+            </div>
+            <div class="article-info">
+                <p class="date">2022-04-06 11:03:03</p>
+                <h3>Pentingnya Website Sekolah yang Wajib Guru Ketahui</h3>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
