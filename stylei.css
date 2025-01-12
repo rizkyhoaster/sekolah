@@ -115,14 +115,14 @@
 
 h1 {
     font-size: 2.5em; /* Ukuran font judul */
-    color: #fff; /* Warna teks */
+    color: #333; /* Warna teks */
     font-weight: bold; /* Menebalkan teks */
     margin-bottom: 10px; /* Memberikan jarak di bawah judul */
 }
 
 p {
     font-size: 1.2em; /* Ukuran font paragraf */
-    color: #fff; /* Warna teks */
+    color: #333; /* Warna teks */
     margin-bottom: 30px; /* Memberikan jarak di bawah paragraf */
 }
 
@@ -375,12 +375,13 @@ p {
 
 .ukm-container {
     display: flex; /* Membuat elemen saling berbaris horizontal */
-    gap: 15px;
+    gap: 15px; /* Jarak antar elemen */
     overflow-x: auto; /* Scroll horizontal diaktifkan */
     padding-bottom: 10px; /* Ruang ekstra untuk scrollbar */
     white-space: nowrap; /* Menjaga elemen tetap dalam satu baris */
     scroll-snap-type: x mandatory; /* Efek snap pada scroll */
 }
+
 
 .ukm-item {
     text-align: center;
@@ -500,43 +501,75 @@ p {
 }
 /* Galeri Video Section */
 .galeri-video {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Menetapkan warna latar belakang putih untuk galeri */
+    padding: 40px; /* Memberikan ruang dalam di sekitar konten */
+    border-radius: 8px; /* Menambahkan sudut melengkung pada galeri */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus untuk efek kedalaman */
+    max-width: 100%; /* Menghindari galeri meluas lebih dari lebar layar */
+    margin: 0 auto; /* Menjaga galeri agar selalu berada di tengah layar */
 }
 
+/* Kontainer Video */
 .video-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    display: grid; /* Menggunakan grid untuk pengaturan layout video */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Menentukan jumlah kolom yang fleksibel */
+    gap: 20px; /* Memberikan jarak antara elemen-elemen grid */
+    margin-top: 20px; /* Menambahkan jarak atas antara galeri dan video */
+    width: 100%; /* Pastikan kontainer tidak meluas lebih dari layar */
+    box-sizing: border-box; /* Memastikan padding dan margin tidak mempengaruhi lebar kontainer */
 }
 
+/* Styling untuk video */
 iframe {
-    width: 100%;
-    height: 180px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Menjaga lebar video agar mengikuti lebar kontainer */
+    height: 180px; /* Menentukan tinggi video */
+    border-radius: 8px; /* Menambahkan sudut melengkung pada video */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus pada video */
+    object-fit: cover; /* Menjaga aspek rasio video agar sesuai dengan kontainer */
 }
 
-/* Styling for the "Lihat Selengkapnya" link */
+/* Styling untuk link "Lihat Selengkapnya" */
 a.lihat-selengkapnya {
-    display: inline-block;
-    text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    background-color: #28a745;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    display: inline-block; /* Menjadikan link sebagai elemen blok agar bisa diatur lebar dan tinggi */
+    text-align: center; /* Menyelaraskan teks di dalam link ke tengah */
+    margin-top: 20px; /* Memberikan jarak atas antara video dan link */
+    font-weight: bold; /* Menebalkan teks link */
+    text-decoration: none; /* Menghapus garis bawah pada link */
+    color: #333; /* Menetapkan warna teks link menjadi abu-abu gelap */
+    background-color: #28a745; /* Menetapkan warna latar belakang hijau pada link */
+    padding: 10px 20px; /* Menambahkan ruang di dalam link */
+    border-radius: 5px; /* Memberikan sudut melengkung pada tombol link */
+    transition: background-color 0.3s; /* Efek transisi pada perubahan warna latar belakang saat hover */
 }
 
+/* Efek hover pada link "Lihat Selengkapnya" */
 a.lihat-selengkapnya:hover {
-    background-color: #218838;
+    background-color: #218838; /* Mengubah warna latar belakang menjadi hijau gelap saat hover */
 }
+
+/* Media Query untuk layar kecil (misalnya ponsel) */
+@media (max-width: 768px) {
+    /* Mengubah grid agar kolom menyesuaikan dengan ukuran layar */
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* Membuat dua kolom untuk layar kecil */
+    }
+
+    iframe {
+        height: 160px; /* Menyesuaikan tinggi video agar tidak terlalu besar pada layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mengubah grid agar kolom hanya 2 untuk layar ponsel */
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* Menampilkan dua kolom per baris */
+    }
+
+    iframe {
+        height: 140px; /* Menyesuaikan tinggi video untuk layar yang lebih kecil */
+    }
+}
+
 
 /* Seksi Testimoni */
 .testimoni-section {
@@ -566,16 +599,20 @@ a.lihat-selengkapnya:hover {
     border-radius: 15px; /* Opsional: sedikit lengkung pada kontainer */
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* Opsional: menambahkan bayangan */
     margin: 0 auto; /* Agar kontainer tetap berada di tengah */
+    max-width: 100%; /* Agar kontainer tidak lebih besar dari layar */
 }
 
 /* Gaya untuk Setiap Kartu Testimoni */
 .testimoni-card {
-    flex: 0 0 300px; /* Set lebar tetap untuk kartu */
+    flex: 0 0 auto; /* Kartu tidak mengubah ukuran otomatis */
+    min-width: 250px; /* Menentukan ukuran minimum kartu agar tidak terlalu kecil */
+    width: 300px; /* Lebar tetap untuk kartu */
     position: relative; /* Dibutuhkan untuk pseudo-elemen */
     background: #fff;
-    border-radius: 15px;
+    border-radius: 10px; /* Sudut melengkung untuk kartu */
+    border: 1px solid #28a745; /* Border hijau lebih tebal */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: 20px; /* Padding dalam kartu */
     text-align: center;
     transition: transform 0.3s ease-in-out;
 }
@@ -584,30 +621,30 @@ a.lihat-selengkapnya:hover {
 .testimoni-card::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: 0; /* Menyelaraskan garis dengan bagian atas kartu */
     left: 0;
     width: 100%;
-    height: 5px; /* Ketebalan garis */
+    height: 5px; /* Ketebalan garis hijau */
     background-color: #28a745; /* Warna hijau */
-    border-top-left-radius: 15px; /* Sesuai dengan border kartu */
-    border-top-right-radius: 15px;
+    border-top-left-radius: 10px; /* Menyesuaikan dengan border-radius kartu */
+    border-top-right-radius: 10px; /* Menyesuaikan dengan border-radius kartu */
 }
-
 /* Efek Hover pada Kartu */
 .testimoni-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    background-color: #fafafa;
+    background-color: #E6E6FA;
 }
 
 /* Avatar Pengguna */
 .avatar img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
+        width: 110px; /* Ukuran gambar */
+        height: 110px; /* Ukuran gambar */
+        border-radius: 50%; /* Membuat border lingkaran */
+        border: 3px solid #28a745; /* Border dengan warna dan ketebalan */
+        object-fit: cover; /* Agar gambar tidak terdistorsi */
+        margin-bottom: 5px; /* Menambahkan margin bawah */
+    }
 
 /* Kutipan */
 .quote {
