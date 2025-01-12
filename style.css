@@ -8,7 +8,7 @@
 /* General Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     color: #333; /* Warna teks agar tetap jelas di atas latar belakang putih */
 }
 /* Menambahkan aturan untuk memastikan elemen lainnya tidak mempengaruhi latar belakang */
@@ -372,32 +372,27 @@ p {
     scroll-snap-type: x mandatory; /* Snap scroll untuk setiap kartu */
     padding-bottom: 10px;
     transition: overflow-x 0.2s ease; /* Transisi mulus */
+    justify-content: center; /* Elemen tetap berada di tengah */
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; /* Pastikan kontainer memenuhi lebar layar */
 }
 
 .layanan-cards.hide-overflow {
     overflow-x: hidden; /* Hilangkan overflow saat disentuh */
 }
 
-
 .card {
     flex: 0 0 auto; /* Pastikan setiap kartu tidak menyusut atau meluas */
     scroll-snap-align: center; /* Setiap kartu akan berhenti di tengah */
-    width: 200px; /* Atur lebar kartu */
+    min-width: 200px; /* Pastikan lebar minimum kartu */
     text-align: center;
     background-color: #f1f1f1;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.card {
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    box-sizing: border-box; /* Pastikan padding dan border dihitung dalam lebar elemen */
 }
 
 .card i {
@@ -410,6 +405,21 @@ p {
     font-size: 14px;
     color: #333;
 }
+
+/* Media Query untuk perangkat mobile */
+@media screen and (max-width: 600px) {
+    .layanan-cards {
+        flex-wrap: nowrap; /* Biarkan kartu pindah ke baris berikutnya pada layar kecil */
+        justify-content: flex-start; /* Kartu diatur ke kiri untuk menghindari spasi kosong */
+    }
+    
+    .card {
+        width: 150px; /* Sesuaikan lebar kartu pada layar kecil */
+        margin-bottom: 15px; /* Memberikan jarak antar kartu di bawah */
+    }
+}
+
+
 /* Artikel dan Berita Section */
 .beritakan {
     width: 90%;
