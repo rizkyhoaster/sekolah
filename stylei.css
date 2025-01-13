@@ -1,596 +1,739 @@
-<?php
-// PHP code can be added here if necessary
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDN 38 Talang Ubi</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="stylei.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <!-- Login Form Modal -->
-<div id="loginModal" class="login-modal">
-    <div class="login-modal-content">
-        <span class="close-btn" id="closeLoginModal">&times;</span>
-        <h2>Login</h2>
-        <form action="login.php" method="POST">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-            
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</div>
-<div class="clip-shape"></div>
-
-<style>
-  /* Style untuk Shape */
-  .clip-shape {
-      position: absolute; /* Posisi bebas */
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 300px;
-      background: linear-gradient(135deg,  #f39c12,  #FFDB58);
-      clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
-      z-index: -1; /* Letakkan di belakang elemen lain */
+/* Bagian sambutan ini jangan lupa */
+.principal-message {
+    display: flex; /* Menggunakan Flexbox untuk tata letak */
+    flex-direction: row; /* Menyusun elemen secara horizontal (gambar di kiri, teks di kanan) */
+    align-items: center; /* Menyelaraskan elemen secara vertikal ke tengah */
+    justify-content: flex-start; /* Menyelaraskan elemen ke kiri */
+    padding: 20px; /* Memberikan ruang di dalam elemen */
+    margin: 20px 0; /* Memberikan jarak luar di atas dan bawah */
+    background-color: #ffffff; /* Warna latar belakang putih */
+    border: 2px solid #f39c12; /* Garis tepi dengan warna biru */
+    border-radius: 10px; /* Menjadikan sudut kotak lebih bulat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan lembut di bawah kotak */
   }
-
-  /* Pastikan body memiliki position relative */
-  body {
-      position: relative; /* Agar shape menggunakan referensi body */
-      margin: 0;
-      padding: 0;
+  
+  .image-wrapper {
+    flex: 1; /* Menentukan bahwa elemen ini akan mengambil 1 bagian dari ruang yang tersedia */
+    text-align: center; /* Menyelaraskan gambar di tengah secara horizontal */
+    padding: 10px; /* Memberikan ruang di sekitar gambar */
   }
-</style>
-<nav class="navbar">
-  <div class="logo">
-    <img src="gambar/logosekolah.jpg" alt="Logo STMIK" class="school-logo">
-    <div>
-      <h1>SDN</h1>
-      <p>SDN 38 Talang Ubi</p>
-    </div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#">Beranda</a></li>
-    <li><a href="#">Profile</a></li>
-    <!-- Artikel dengan submenu -->
-    <li class="dropdown">
-  <span class="dropdown-toggle">Berita ▾</span>
-  <ul class="submenu">
-    <li><a href="articel.php">Artikel </a></li>
-    <li><a href="sub-artikel2.php">Agenda</a></li>
-  </ul>
-</li>
-    <li><a href="#">Informasi</a></li>
-    <li><a href="contac.php">Kontak</a></li>
-  </ul>
-  <!-- Tombol Login di luar nav-links -->
-  <button class="login-btn">Login</button>
+  
+  .principal-image {
+    max-width: 250px; /* Gambar tidak akan lebih lebar dari 250px */
+    height: auto; /* Menjaga proporsi gambar tetap sesuai dengan lebar */
+    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+    border: 3px solid #f39c12; /* Memberikan garis tepi berwarna biru pada gambar */
+  }
+  
+  .message-content {
+    flex: 2; /* Menyediakan lebih banyak ruang bagi teks (dua kali ruang gambar) */
+    padding: 10px; /* Memberikan ruang di sekitar teks */
+  }
+  
+  .section-title {
+    font-size: 28px; /* Ukuran font judul */
+    font-weight: bold; /* Membuat teks tebal */
+    margin: 0 0 10px; /* Memberikan jarak bawah pada judul */
+    color: #f39c12; /* Warna biru pada judul */
+  }
+  
+  .highlight {
+    color: #015601; /* Menyorot teks dengan warna biru */
+  }
+  
+  .message {
+    font-size: 16px; /* Ukuran font untuk isi pesan */
+    line-height: 1.8; /* Jarak antar baris untuk kenyamanan membaca */
+    color: #333; /* Warna teks yang gelap */
+    text-align: justify; /* Menyusun teks agar rata kiri dan kanan */
+  }
+  
+  /* Responsif untuk layar kecil (Tablet - Maks. 768px) */
+  @media screen and (max-width: 768px) {
+    .principal-message {
+      flex-direction: row; /* Menjaga gambar tetap di kiri dan teks di kanan */
+      align-items: center; /* Menyelaraskan elemen secara vertikal di tengah */
+      justify-content: flex-start; /* Menyelaraskan elemen ke kiri */
+    }
+  
+    .principal-image {
+      max-width: 150px; /* Menurunkan ukuran gambar menjadi sedikit lebih besar */
+      margin-right: 15px; /* Memberikan jarak antara gambar dan teks */
+    }
+  
+    .section-title {
+      font-size: 24px; /* Menurunkan ukuran font judul */
+    }
+  
+    .message {
+      font-size: 14px; /* Menurunkan ukuran font pesan */
+    }
+  }
+  
+ /* Responsif untuk layar sangat kecil (Ponsel - Maks. 480px) */
+@media screen and (max-width: 480px) {
+    .principal-message {
+      flex-direction: column; /* Mengatur tata letak menjadi kolom */
+      align-items: center; /* Menyelaraskan elemen ke tengah */
+      text-align: center; /* Menyelaraskan teks di tengah */
+    }
+  
+    .image-wrapper {
+      order: -1; /* Memastikan gambar muncul pertama di dalam tata letak */
+      margin-bottom: 15px; /* Memberikan jarak antara gambar dan teks */
+    }
+  
+    .principal-image {
+      max-width: 80vw; /* Gambar mengambil 80% lebar layar */
+      min-width: 120px; /* Ukuran gambar tidak lebih kecil dari 120px */
+      height: auto; /* Menjaga proporsi gambar */
+      margin-bottom: 15px; /* Memberikan jarak bawah gambar dari teks */
+    }
+  
+    .section-title {
+      font-size: 20px; /* Ukuran font judul lebih kecil */
+    }
+  
+    .message {
+      font-size: 14px; /* Ukuran font pesan lebih kecil */
+    }
+  }
+  
+  
+/* Daftar Guru dan Pimpinan */
+.daftar-guru {
+    background-color: #f4f4f4; /* Warna latar belakang */
+    padding: 40px; /* Memberikan jarak di dalam elemen */
+    text-align: center; /* Menyelaraskan teks ke tengah */
+}
 
-  <!-- Burger Icon -->
-  <div class="burger" id="burger" onclick="toggleBurger()">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-  </div>
-</nav>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('.nav-links');
-    const loginBtn = document.querySelector('.login-btn');
-    const dropdowns = document.querySelectorAll('.dropdown');
+.containeri {
+    max-width: 1200px; /* Lebar maksimum container */
+    margin: 0 auto; /* Memusatkan elemen */
+    padding: 20px; /* Memberikan jarak di dalam elemen */
+}
 
-    // Fungsi untuk toggle menu navigasi
-    function toggleBurger() {
-      navLinks.classList.toggle('open'); // Menambah/hapus kelas 'open'
-      burger.classList.toggle('active'); // Menambah/hapus kelas 'active' untuk animasi burger
+h1 {
+    font-size: 2.5em; /* Ukuran font judul */
+    color: #333; /* Warna teks */
+    font-weight: bold; /* Menebalkan teks */
+    margin-bottom: 10px; /* Memberikan jarak di bawah judul */
+}
+
+p {
+    font-size: 1.2em; /* Ukuran font paragraf */
+    color: #333; /* Warna teks */
+    margin-bottom: 30px; /* Memberikan jarak di bawah paragraf */
+}
+
+/* Card List Styles */
+.card1-list {
+    display: flex; /* Menampilkan elemen secara horizontal */
+    flex-wrap: nowrap; /* Mencegah elemen membungkus ke bawah */
+    justify-content: flex-start; /* Menyusun elemen mulai dari kiri */
+    overflow-x: auto; /* Scroll horizontal */
+    gap: 15px; /* Jarak antar elemen */
+    padding: 10px 0; /* Memberikan jarak atas dan bawah pada list */
+    scroll-behavior: smooth; /* Perpindahan scroll yang halus */
+}
+
+/* Scrollbar Styles */
+.card1-list::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar */
+    background-color: #f4f4f4; /* Warna latar scrollbar */
+}
+
+.card1-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Warna scrollbar */
+    border-radius: 4px; /* Membuat scrollbar lebih melengkung */
+}
+
+/* Card Styles */
+.card1 {
+    background-color: rgba(255, 255, 255, 0); /* Warna latar belakang kartu transparan */
+    border: 0px solid #28a745;  /* Border lebih tebal */
+    border-radius: 10px; /* Membuat sudut kartu melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada kartu */
+    text-align: center; /* Menyelarangkan teks di tengah kartu */
+    width: 200px; /* Lebar kartu */
+    height: 300px; /* Menambah tinggi kartu agar border lebih tinggi */
+    flex-shrink: 0; /* Mencegah kartu mengecil */
+    position: relative; /* Untuk posisi elemen anak seperti badge */
+    overflow: hidden; /* Memastikan isi kartu tidak keluar */
+}
+
+.card1 img {
+    width: 100%; /* Gambar menggunakan lebar penuh kartu */
+    height: 120%; /* Gambar menjadi lebih tinggi */
+    object-fit: cover; /* Menjaga proporsi gambar agar menutupi seluruh kartu */
+    border-radius: 10px; /* Menambahkan border-radius ke gambar agar sudutnya melengkung */
+}
+
+
+.badge {
+    background-color: #28a745; /* Warna latar belakang badge */
+    color: #fff; /* Warna teks badge */
+    font-size: 0.9em; /* Ukuran font badge */
+    padding: 5px 10px; /* Jarak di dalam badge */
+    border-radius: 5px; /* Membuat sudut badge melengkung */
+    position: absolute; /* Memposisikan badge di atas gambar */
+    top: 10px; /* Menempatkan badge di bagian atas */
+    left: 10px; /* Menempatkan badge di sebelah kiri */
+    font-weight: bold; /* Menebalkan teks badge */
+}
+/* Button Styles */
+.btn-lainnya-wrapper {
+    text-align: right; /* Menempatkan tombol di sebelah kanan */
+    margin-top: 20px; /* Memberikan jarak atas pada tombol */
+}
+
+.btn-lainnya {
+    background-color: #28a745; /* Warna tombol */
+    color: #fff; /* Warna teks tombol */
+    padding: 10px 20px; /* Jarak dalam tombol */
+    text-decoration: none; /* Menghapus garis bawah pada link */
+    font-size: 14px; /* Ukuran font tombol */
+    font-weight: bold; /* Menebalkan teks tombol */
+    border-radius: 5px; /* Membuat sudut tombol melengkung */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Bayangan pada tombol */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Efek transisi */
+}
+
+.btn-lainnya:hover {
+    background-color: #f5a623; /* Warna tombol saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar saat hover */
+}
+
+/* Media Queries for Responsiveness */
+
+/* Untuk layar kecil (ponsel) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Menyesuaikan ukuran font judul */
     }
 
-    // Event listener untuk ikon burger
-    burger.addEventListener('click', toggleBurger);
-
-    // Tutup menu jika area luar navigasi atau burger diklik
-    document.addEventListener('click', (e) => {
-      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
-        navLinks.classList.remove('open'); // Tutup menu
-        burger.classList.remove('active'); // Reset animasi burger
-      }
-    });
-
-    // Menangani klik pada dropdown submenu untuk tampilan mobile
-    dropdowns.forEach(dropdown => {
-      const dropdownLink = dropdown.querySelector('.dropdown-toggle'); // Mengambil link menu dropdown
-      const submenu = dropdown.querySelector('.submenu'); // Mengambil submenu
-      dropdownLink.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) { // Hanya berlaku pada layar kecil
-          e.preventDefault(); // Menghindari pengalihan halaman
-          submenu.classList.toggle('open'); // Toggle submenu saat diklik
-          e.stopPropagation(); // Mencegah klik dilanjutkan ke area luar dropdown
-        }
-      });
-    });
-
-    // Menampilkan tombol login dalam menu burger ketika menu terbuka
-    // Hanya aktif pada layar kecil
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        loginBtn.style.display = ''; // Menampilkan tombol login pada layar besar
-        if (!navLinks.classList.contains('open')) {
-          navLinks.appendChild(loginBtn); // Pastikan tombol login di luar nav-links pada desktop
-        }
-      } else {
-        if (navLinks.classList.contains('open')) {
-          navLinks.appendChild(loginBtn); // Memasukkan tombol login ke dalam nav-links saat menu terbuka di mobile
-          loginBtn.style.display = 'block'; // Menampilkan tombol login saat menu burger terbuka
-        } else {
-          loginBtn.style.display = 'none'; // Menyembunyikan tombol login saat menu tertutup
-        }
-      }
-    });
-
-    // Inisialisasi saat halaman dimuat
-    if (window.innerWidth <= 768) {
-      loginBtn.style.display = 'none'; // Tombol login disembunyikan pada awalnya untuk tampilan mobile
-    }
-  });
-</script>
-
-    </header>
-
-    <!-- Main Section -->
-    <main>
-        <!-- Slider Section -->
-        <section class="slider">
-            <div class="slides">
-                <!-- Slide 1 -->
-                <div class="slide">
-                    <img src="gambar/csm.jpg" alt="Slide 1">
-                </div>
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <img src="gambar/sekolahku.jpg" alt="Slide 2">
-                </div>
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Slide 3">
-                </div>
-            </div>
-            <!-- Navigation Buttons -->
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-            <script>
-    let currentIndex = 0; // Track the current slide
-    const slides = document.querySelector('.slides');
-    const totalSlides = document.querySelectorAll('.slide').length;
-
-    function changeSlide(direction = 1) {
-        currentIndex += direction;
-
-        // Loop back to the first slide or last slide
-        if (currentIndex < 0) {
-            currentIndex = totalSlides - 1;
-        } else if (currentIndex >= totalSlides) {
-            currentIndex = 0;
-        }
-
-        // Apply transform to move slides
-        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    p {
+        font-size: 1em; /* Menyesuaikan ukuran font paragraf */
     }
 
-    // Auto-slide every 3 seconds
-    setInterval(() => {
-        changeSlide(1); // Move to the next slide
-    }, 3000);
+    .card1 {
+        width: 200px; /* Lebar kartu lebih kecil pada layar ponsel */
+    }
 
-    // Allow manual control via navigation buttons
-    document.querySelector('.prev').addEventListener('click', () => changeSlide(-1));
-    document.querySelector('.next').addEventListener('click', () => changeSlide(1));
-</script>
+    .badge {
+        font-size: 0.8em; /* Menyesuaikan ukuran badge */
+        padding: 3px 8px; /* Menyesuaikan padding badge */
+    }
 
-        </section>
-        <section class="principal-message">
-  <div class="image-wrapper">
-    <img src="gambar/sambutan.jpg" alt="Kepala Sekolah" class="principal-image">
-  </div>
-  <div class="message-content">
-    <h2 class="section-title">Sambutan <span class="highlight">Kepala Sekolah</span></h2>
-    <p class="message">
-      Assalamualaikum wr. wb. Puji syukur kepada Tuhan YME, atas berkat dan karunianya sehingga website SD Negeri 38 Talang Ubi mulai diaktifkan sebagai sarana informasi dan komunikasi sekolah dengan peserta didik, guru, pemerhati sekolah, orang tua siswa dan juga masyarakat. Untuk itu saya mengucapkan banyak terima kasih kepada semua pihak yang mendukung diaktifkannya website ini, terutama kepada Bapak/Ibu Dewan guru, staf Tata Usaha dan juga semua pihak yang tidak dapat saya sebutkan satu per satu.
-    </p>
-  </div>
-</section>
-        <!-- Layanan Unggulan -->
-        <section class="layanan">
-            <h3>Layanan Unggulan SDN 38 Talang Ubi</h3>
-            <div class="layanan-cards">
-                <div class="card" data-link="visi-misi.html">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <p>Visi dan Misi</p>
-                </div>
-                <div class="card" data-link="download.html">
-                    <i class="fa-solid fa-download"></i>
-                    <p>Download</p>
-                </div>
-                <div class="card" data-link="sambutan.html">
-                    <i class="fa-solid fa-handshake"></i>
-                    <p>Sambutan</p>
-                </div>
-                <div class="card" data-link="articel.php">
-                <i class="fa-solid fa-pencil"></i>
-                    <p>Artikel</p>
-                </div>
-                <div class="card" data-link="agenda.html">
-                    <i class="fa-solid fa-calendar"></i>
-                    <p>Agenda</p>
-                </div>
-                <div class="card" data-link="pengumuman.html">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    <p>Pengumuman</p>
-                </div>
-                <script>const layananCards = document.querySelector('.layanan-cards');
+    .btn-lainnya {
+        font-size: 12px; /* Menyesuaikan ukuran tombol */
+        padding: 8px 15px; /* Menyesuaikan padding tombol */
+    }
+}
 
-// Menambahkan event listener untuk mendeteksi sentuhan atau scroll
-layananCards.addEventListener('mouseenter', () => {
-    layananCards.classList.remove('hide-overflow'); // Menampilkan overflow saat disentuh
-});
+/* Untuk layar sedang (tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.3em; /* Menyesuaikan ukuran font untuk tablet */
+    }
 
-layananCards.addEventListener('mouseleave', () => {
-    layananCards.classList.add('hide-overflow'); // Menyembunyikan overflow setelah tidak disentuh
-});
-</script>
-            </div>
+    p {
+        font-size: 1.1em; /* Menyesuaikan ukuran font untuk tablet */
+    }
 
-            <script>
-                const cards = document.querySelectorAll('.card');
+    .card1 {
+        width: 150px; /* Lebar kartu lebih kecil pada tablet */
+    }
 
-                cards.forEach(card => {
-                    card.addEventListener('click', () => {
-                        const link = card.getAttribute('data-link');
-                        if (link) {
-                            window.location.href = link;
-                        }
-                    });
-                });
-            </script>
-        </section>
+    .badge {
+        font-size: 0.85em; /* Menyesuaikan ukuran badge untuk tablet */
+        padding: 4px 9px; /* Menyesuaikan padding badge untuk tablet */
+    }
+}
 
-        <!-- Artikel dan Berita -->
-<div class="beritakan">
-    <h2>Artikel dan Berita</h2>
-    <p style="color: black;">Aktivitas terbaru SDN 38 Talang Ubi</p>
-    <div class="artikels">
-        <a href="link-to-article-1.html" class="kartu">
-            <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Wisuda ke-13">
-            <span class="label">Berita</span>
-            <p class="tanggal">2024-12-19 18:55:53</p>
-            <h3>STMIK Syaikh Zainuddin NW Anjani Gelar Wisuda ke 13 di Mataram</h3>
-        </a>
-        <a href="link-to-article-2.html" class="kartu">
-            <img src="gambar/sekolahku.jpg" alt="Uji Publik">
-            <span class="label">Berita</span>
-            <p class="tanggal">2024-05-19 20:39:42</p>
-            <h3>STMIK Syaikh Zainuddin NW Anjani Laksanakan Uji Publik Panitia Seleksi SATGAS PPKS</h3>
-        </a>
-        <a href="link-to-article-3.html" class="kartu">
-            <img src="gambar/sekolahku.jpg" alt="Wisuda ke-12">
-            <span class="label">Berita</span>
-            <p class="tanggal">2024-01-18 12:54:21</p>
-            <h3>STMIK Syaikh Zainuddin NW Anjani Gelar Wisuda ke - XII</h3>
-        </a>
-        <a href="link-to-article-3.html" class="kartu">
-            <img src="gambar/sekolahku.jpg" alt="Wisuda ke-12">
-            <span class="label">Berita</span>
-            <p class="tanggal">2024-01-18 12:54:21</p>
-            <h3>STMIK Syaikh Zainuddin NW Anjani Gelar Wisuda ke - XII</h3>
-        </a>
-    </div>
-    <div class="lainnya-wrapper">
-        <a href="link-to-all-agendas.html" class="lainnya1-btn">Lainnya</a>
-    </div>
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const artikelContainers = document.querySelectorAll('.artikels, .agenda .artikels');
+/* Untuk layar besar (desktop) */
+@media (min-width: 1025px) {
+    h1 {
+        font-size: 2.5em; /* Menjaga ukuran font judul pada layar besar */
+    }
 
-        artikelContainers.forEach(container => {
-            container.addEventListener('mouseenter', () => {
-                container.classList.add('active'); // Tampilkan scrollbar
-            });
+    p {
+        font-size: 1.2em; /* Menjaga ukuran font paragraf pada layar besar */
+    }
 
-            container.addEventListener('mouseleave', () => {
-                container.classList.remove('active'); // Sembunyikan scrollbar
-            });
-        });
-    });
-</script>
+    .card1 {
+        width: 200px; /* Lebar kartu default */
+    }
 
-<div class="agenda">
-    <h2>Agenda</h2>
-    <p style="color: black;"></pstyle>Agenda SDN 38 Talang Ubi</p>
-    <div class="artikels">
-        <a href="link-to-agenda-1.html" class="kartu">
-            <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Penerimaan Mahasiswa Baru">
-            <span class="label">Agenda</span>
-            <p class="tanggal">2024-05-31</p>
-            <h3>Penerimaan Mahasiswa Baru TA 2024/2025</h3>
-        </a>
-        <a href="link-to-agenda-2.html" class="kartu">
-            <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Ujian Tengah Semester">
-            <span class="label">Agenda</span>
-            <p class="tanggal">2024-04-01</p>
-            <h3>UTS Genap 2023/2024</h3>
-        </a>
-        <a href="link-to-agenda-3.html" class="kartu">
-            <img src="gambar/sekolahku.jpg" alt="Profil Pelajar Pancasila">
-            <span class="label">Agenda</span>
-            <p class="tanggal">2022-05-05</p>
-            <h3>Profil Pelajar Pancasila</h3>
-        </a>
-        <a href="link-to-agenda-3.html" class="kartu">
-            <img src="gambar/sekolahku.jpg" alt="Profil Pelajar Pancasila">
-            <span class="label">Agenda</span>
-            <p class="tanggal">2022-05-05</p>
-            <h3>Profil Pelajar Pancasila</h3>
-        </a>
-        <a href="link-to-agenda-3.html" class="kartu">
-            <img src="gambar/sekolahku.jpg" alt="Profil Pelajar Pancasila">
-            <span class="label">Agenda</span>
-            <p class="tanggal">2022-05-05</p>
-            <h3>Profil Pelajar Pancasila</h3>
-        </a>
-        <!-- Tombol Lainnya -->
-    </div>
-    <div class="lainnya-wrapper">
-        <a href="link-to-all-agendas.html" class="lainnya-btn">Lainnya</a>
-    </div>
-</div>
-<section class="daftar-guru">
-    <div class="containeri">
-        <h1>Daftar Guru dan Staff</h1>
-        <p>Daftar Guru Dan Staff SDN 38 talang Ubi</p>
+    .badge {
+        font-size: 0.9em; /* Ukuran badge untuk layar besar */
+        padding: 5px 10px; /* Padding badge untuk layar besar */
+    }
+}
 
-        <!-- Scrollable container -->
-        <div class="card1-list">
-            <div class="card1">
-                <div class="badge">Kepsek</div>
-                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Ketua">
-            </div>
-            <div class="card1">
-                <div class="badge">Waksep</div>
-                <img src="gambar/𝙆𝙄𝙇𝙇𝙐𝘼 𝙕𝙊𝙇𝘿𝙔𝘾𝙆.jpeg" alt="Wakil">
-            </div>
-            <div class="card1">
-                <div class="badge">GURU MTK</div>
-                <img src="gambar/sekolahku.jpg" alt="Guru C">
-            </div>
-            <div class="card1">
-                <div class="badge">GURU IPA</div>
-                <img src="waket3.jpg" alt="Guru D">
-            </div>
-            <div class="card1">
-                <div class="badge">GURU PJOK</div>
-                <img src="kaprodi-ti.jpg" alt="Guru A">
-            </div>
-            <div class="card1">
-                <div class="badge">GURU SBD</div>
-                <img src="kaprodi-si.jpg" alt="Guru B">
-            </div>
-        </div>
-        <div class="lainnya-wrapper">
-        <a href="link-to-all-agendas.html" class="btn-lainnya">Lainnya</a>
-    </div>
-</section>
-<!-- banner Iklan -->
-<section class="promo-section">
-    <div class="banner-wrapper">
-        <div class="banner-slider">
-            <div class="banner-item">
-                <img src="gambar/Captddsure-removebg-preview.png" alt="Iklan Banner 1">
-            </div>
-            <div class="banner-item">
-                <img src="gambar/Captddsure-removebg-preview.png" alt="Iklan Banner 2">
-            </div>
-            <div class="banner-item">
-                <img src="gambar/Captddsure-removebg-preview.png" alt="Iklan Banner 3">
-            </div>
-            <div class="banner-item">
-                <img src="gambar/Captddsure-removebg-preview.png" alt="Iklan Banner 4">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Section 1: Unit Kegiatan Mahasiswa -->
-<section class="unit-kegiatan">
-<h2>Informasi Seragam</h2>
-    <div class="ukm-container">
-        <div class="ukm-item">
-            <img src="galery/senini.jpg" alt="SENIN">
-            <span>Senin</span>
-        </div>
-        <div class="ukm-item">
-            <img src="galery/rabu.jpg" alt="UKM 2">
-            <span>Rabu</span>
-        </div>
-        <div class="ukm-item">
-            <img src="galery/jumat1.jpg" alt="UKM 3">
-            <span>Jumat</span>
-        </div>
-        <div class="ukm-item">
-            <img src="galery/sabtu.jpg" alt="UKM 4">
-            <span>Sabtu</span>
-        </div>
-    </div>
-</section>
+/* Promo Section */
+.promo-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.banner-slider {
+    display: flex;
+    animation: slide 10s infinite linear; /* Animasi untuk slider */
+    transition: transform 1s ease-in-out;
+}
+
+.banner-item {
+    flex: 0 0 50%; /* Setiap banner mengambil 50% lebar slider */
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 1; /* Gambar tetap terlihat */
+}
+
+.banner-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Animasi slide */
+@keyframes slide {
+    0% {
+        transform: translateX(0); /* Posisi pertama */
+    }
+    25% {
+        transform: translateX(0); /* Tetap pada gambar pertama */
+    }
+    30% {
+        transform: translateX(-50%); /* Geser ke kiri (slide kedua) */
+    }
+    55% {
+        transform: translateX(-50%); /* Tetap pada gambar kedua */
+    }
+    60% {
+        transform: translateX(-100%); /* Geser ke kiri (slide ketiga) */
+    }
+    85% {
+        transform: translateX(-100%); /* Tetap pada gambar ketiga */
+    }
+    90% {
+        transform: translateX(-150%); /* Geser ke kiri (slide keempat) */
+    }
+    100% {
+        transform: translateX(0); /* Kembali ke posisi awal */
+    }
+}
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Heading styling */
+h2 {
+    color: #ffc107;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Deskripsi styling */
+p {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Unit Kegiatan Mahasiswa Section */
+.unit-kegiatan {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Membolehkan scroll horizontal */
+    white-space: nowrap; /* Mencegah elemen membungkus ke baris berikutnya */
+    scroll-behavior: smooth; /* Scroll yang halus */
+}
+
+/* Styling untuk scrollbar */
+.unit-kegiatan::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar */
+}
+
+.unit-kegiatan::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Warna scrollbar */
+    border-radius: 4px; /* Membuat scrollbar lebih melengkung */
+}
+
+.ukm-container {
+    display: flex; /* Membuat elemen saling berbaris horizontal */
+    gap: 15px; /* Jarak antar elemen */
+    overflow-x: auto; /* Scroll horizontal diaktifkan */
+    padding-bottom: 10px; /* Ruang ekstra untuk scrollbar */
+    white-space: nowrap; /* Menjaga elemen tetap dalam satu baris */
+    scroll-snap-type: x mandatory; /* Efek snap pada scroll */
+}
 
 
-    <!-- Section 2: Galeri Kegiatan -->
-    <section class="galeri-kegiatan">
-        <h2>Galeri Kegiatan</h2>
-        <p>Galeri Kegiatan STMIK Syaikh Zainuddin NW Anjani</p>
-        <div class="galeri-container">
-            <div class="galeri-item">
-                <img src="galery/kerjabakti.jpg" alt="Kegiatan">
-                <span>Kerja Bakti</span>
-            </div>
-            <div class="galeri-item">
-                <img src="galery/literasi.jpg" alt="Kegiatan">
-                <span>Literasi</span>
-            </div>
-            <div class="galeri-item">
-                <img src="galery/senam.jpg" alt="Kegiatan">
-                <span>Senam Sehat</span>
-            </div>
-        </div>
-        <a href="#" class="lihat-selengkapnya">Lihat Selengkapnya</a>
-    </section>
+.ukm-item {
+    text-align: center;
+    width: 280px; /* Ukuran item */
+    flex-shrink: 0; /* Menjaga elemen tetap dalam satu baris */
+    scroll-snap-align: center; /* Posisi snap di tengah */
+    background-color: #ffffff; /* Warna latar item */
+    border: 3px solid #ffc107; /* Membuat border lebih tebal */
+    border-radius: 8px;
+    overflow: hidden; /* Menjaga gambar tetap rapi */
+}
 
-    <!-- Section 3: Galeri Video -->
-    <section class="galeri-video">
-        <h2>Galeri Video</h2>
-        <p>Galeri Video SDN 38 Talang Ubi</p>
-        <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/H0sXsOiL5u0?si=dHAO3PG7SVoLdsy0" title="Pantang Pulang Sebelum Hafalan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/8cwRK9gFZMg?si=HGWAWac9-iSmIBX9" title="SAMPAHKU INSPIRASIKU UNTUK GAYA HIDUP BERKELANJUTAN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/v4Br8eTrnT0?si=xj2Z5K41Ws9qqISY" title="SDN 38 Mwngikuti Kegiatan Karnaval" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/pga1BmAxUfg?si=MFjgC5pXac91fJKz" title="SDN 38 Karnaval " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    </section>
-    <div class="testimoni-section">
-    <!-- Judul Bagian Testimoni -->
-    <h2>Pesan alumni terbaik kami</h2>
-    <div class="testimoni-container">
-        <!-- Kartu Testimoni Pertama -->
-        <div class="testimoni-card">
-            <div class="avatar">
-                <img src="gambar/Gambar WhatsApp 2025-01-05 pukul 18.49.31_d822506b.jpg" alt="Avatar Rizky">
-            </div>
-            <p class="quote">"Keindahan hidup bukan terletak pada tujuan, tetapi pada cara kita menikmati setiap langkah yang kita ambil."</p>
-            <div class="author-info">
-                <h4>Rizky Rahmat F</h4>
-                <span>Alumni 2014</span>
-            </div>
-        </div>
-        <!-- Kartu Testimoni Kedua -->
-        <div class="testimoni-card">
-            <div class="avatar">
-                <img src="gambar/lola amuni.jpg" alt="Avatar Lola">
-            </div>
-            <p class="quote">"Kejar mimpimu dengan sepenuh hati, karena mereka adalah bintang yang menerangi jalanmu meski terkadang gelap."</p>
-            <div class="author-info">
-                <h4>Lolla N Monica</h4>
-                <span>Alumni 2014</span>
-            </div>
-        </div>
-        <!-- Kartu Testimoni Ketiga -->
-        <div class="testimoni-card">
-            <div class="avatar">
-                <img src="gambar/hamdan.jpg" alt="Avatar dandi">
-            </div>
-            <p class="quote">"Jangan pernah takut untuk mengejar impianmu, karena setiap langkah kecil membawa kamu lebih dekat pada tujuan".</p>
-            <div class="author-info">
-                <h4>Hamdandih</h4>
-                <span>Alumni 2013</span>
-            </div>
-        </div>
-        <div class="testimoni-card">
-            <div class="avatar">
-                <img src="gambar/silvanii.jpg" alt="Avatar dandi">
-            </div>
-            <p class="quote">"Jangan pernah takut untuk memimpikan hal yang besar, tapi takutlah jika usaha yang kau lakukan tidak cukup besar untuk mencapainya".</p>
-            <div class="author-info">
-                <h4>Silvani</h4>
-                <span>Alumni 2014</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="related-links">
-    <!-- Judul Bagian Link Terkait -->
-    <h2>Link Terkait</h2>
-    <div class="links-container">
-        <a href="https://dapo.kemdikbud.go.id/sekolah/064D2F09BAE7EC34D066" target="_blank">
-            <img src="gambar/kemdikbud.png" alt="Logo LLDIKTI 18">
-        </a>
-        <a href="https://annibuku.com/sekolah/213107-sdn-36-talang-ubi" target="_blank">
-            <img src="gambar/unnamed.png" alt="Logo LAM INFOKOM">
-        </a>
-        <a href="https://ban-pdm.id/satuanpendidikan/10647215" target="_blank">
-            <img src="gambar/Logo BAN berkualitas bagus.png" alt="Logo SIVIL">
-        </a>
-        <a href="https://wikimapia.org/40109633/id/SD-Negeri-38-Talang-Ubi" target="_blank">
-            <img src="gambar/Wikimapia_logo_bicolor.svg.png" alt="Logo Jurnal Teknologi">
-        </a>
-        <a href="https://data-sekolah.zekolah.id/sekolah/sdn-38-talang-ubi-254856" target="_blank">
-            <img src="gambar/zeklah.webp" alt="Logo LPM">
-        </a>
-    </div>
-</div>
+/* Membatasi ukuran gambar agar tidak terlalu besar dan sedikit lebih tinggi */
+.ukm-item img {
+    width: 100%;
+    height: 280px; /* Menambah tinggi gambar */
+    border-bottom: 3px solid #ffc107; /* Border bawah pada gambar */
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+}
 
-    </main>
-    <script>
-        document.getElementById('burger').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    </script>
-</body>
-<footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>Tentang Sekolah</h4>
-                <p>SDN 38 adalah institusi pendidikan yang berfokus pada pengembangan karakter dan keunggulan akademik.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Kontak</h4>
-                <ul>
-                    <li>Alamat: Jl. Pendidikan No. 123, Kota ABC</li>
-                    <li>Telepon: (021) 12345678</li>
-                    <li>Email: info@sekolahxyz.sch.id</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Ikuti Kami</h4>
-                <ul class="social-media">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; SDN 38 Talang Ubi. Hak Cipta Dilindungi.</p>
-        </div>
-    </footer>
-<script>
-    // ini buat login 
-    const loginButton = document.querySelector('.login-btn');
-    const loginModal = document.getElementById('loginModal');
-    const closeModal = document.getElementById('closeLoginModal');
+.ukm-item img:hover {
+    transform: scale(1.05);
+}
 
-    loginButton.addEventListener('click', () => {
-        loginModal.style.display = 'block';
-    });
+.ukm-item span {
+    display: block;
+    background-color: #ffd700;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
 
-    closeModal.addEventListener('click', () => {
-        loginModal.style.display = 'none';
-    });
+/* Responsiveness */
+@media (max-width: 768px) {
+    .ukm-container {
+        gap: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
-    // Close modal if user clicks outside the modal content
-    window.addEventListener('click', (event) => {
-        if (event.target === loginModal) {
-            loginModal.style.display = 'none';
-        }
-    });
-</script>
-</html>
+    .ukm-item {
+        width: 250px;
+    }
+
+    .ukm-item span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ukm-container {
+        overflow-x: scroll; /* Memastikan scroll horizontal pada layar kecil */
+    }
+
+    .ukm-item {
+        width: 210px;
+    }
+
+    .ukm-item span {
+        font-size: 0.8rem;
+    }
+}
+
+/* Galeri Kegiatan Section */
+.galeri-kegiatan {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.galeri-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsif */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.galeri-item {
+    text-align: center;
+    width: 100%; /* Sesuaikan dengan grid */
+    border: 5px solid #28a745;  /* Border lebih tebal */
+    position: relative; /* Menambahkan posisi relatif untuk kontrol posisi anak-anak */
+    overflow: hidden;   /* Menghindari gambar melampaui batas container saat di-hover */
+    border-radius: 0;   /* Pastikan container tidak memiliki lengkungan */
+}
+
+.galeri-item img {
+    width: 100%; /* Gambar mengikuti lebar container */
+    height: 200px; /* Tetapkan tinggi untuk membuat gambar berbentuk kotak */
+    border-radius: 0; /* Tidak ada lengkungan, gambar berbentuk kotak */
+    object-fit: cover; /* Mengisi kotak tanpa distorsi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk tampilan lebih menarik */
+    transition: transform 0.3s ease-in-out; /* Efek transisi saat hover */
+    border-bottom: 3px solid #28a745; /* Border bawah pada gambar */
+    margin-bottom: 0; /* Menghilangkan jarak bawah pada gambar */
+}
+
+/* Hover efek untuk memperbesar gambar */
+.galeri-item img:hover {
+    transform: scale(1.05); /* Efek memperbesar gambar saat hover */
+}
+
+/* Judul atau keterangan di bawah gambar */
+.galeri-item span {
+    display: block;  /* Mengubah span menjadi elemen block agar bisa mengambil seluruh lebar */
+    margin-top: 0;  /* Menghilangkan jarak atas agar lebih rapat dengan gambar */
+    font-weight: bold;  /* Membuat teks menjadi tebal */
+    color: #333;  /* Mengubah warna teks menjadi putih untuk kontras dengan latar belakang hijau */
+    background-color: #28a745;  /* Memberikan latar belakang warna hijau */
+    padding: 10px;  /* Menambahkan padding di dalam span agar teks tidak terlalu rapat dengan tepi */
+    width: 100%;    /* Mengatur lebar span menjadi 100% dari lebar elemen induk */
+}
+/* Galeri Video Section */
+.galeri-video {
+    background-color: #ffffff; /* Menetapkan warna latar belakang putih untuk galeri */
+    padding: 40px; /* Memberikan ruang dalam di sekitar konten */
+    border-radius: 8px; /* Menambahkan sudut melengkung pada galeri */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus untuk efek kedalaman */
+    max-width: 100%; /* Menghindari galeri meluas lebih dari lebar layar */
+    margin: 0 auto; /* Menjaga galeri agar selalu berada di tengah layar */
+}
+
+/* Kontainer Video */
+.video-container {
+    display: grid; /* Menggunakan grid untuk pengaturan layout video */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Menentukan jumlah kolom yang fleksibel */
+    gap: 20px; /* Memberikan jarak antara elemen-elemen grid */
+    margin-top: 20px; /* Menambahkan jarak atas antara galeri dan video */
+    width: 100%; /* Pastikan kontainer tidak meluas lebih dari layar */
+    box-sizing: border-box; /* Memastikan padding dan margin tidak mempengaruhi lebar kontainer */
+}
+
+/* Styling untuk video */
+iframe {
+    width: 100%; /* Menjaga lebar video agar mengikuti lebar kontainer */
+    height: 180px; /* Menentukan tinggi video */
+    border-radius: 8px; /* Menambahkan sudut melengkung pada video */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus pada video */
+    object-fit: cover; /* Menjaga aspek rasio video agar sesuai dengan kontainer */
+}
+
+/* Styling untuk link "Lihat Selengkapnya" */
+a.lihat-selengkapnya {
+    display: inline-block; /* Menjadikan link sebagai elemen blok agar bisa diatur lebar dan tinggi */
+    text-align: center; /* Menyelaraskan teks di dalam link ke tengah */
+    margin-top: 20px; /* Memberikan jarak atas antara video dan link */
+    font-weight: bold; /* Menebalkan teks link */
+    text-decoration: none; /* Menghapus garis bawah pada link */
+    color: #333; /* Menetapkan warna teks link menjadi abu-abu gelap */
+    background-color: #28a745; /* Menetapkan warna latar belakang hijau pada link */
+    padding: 10px 20px; /* Menambahkan ruang di dalam link */
+    border-radius: 5px; /* Memberikan sudut melengkung pada tombol link */
+    transition: background-color 0.3s; /* Efek transisi pada perubahan warna latar belakang saat hover */
+}
+
+/* Efek hover pada link "Lihat Selengkapnya" */
+a.lihat-selengkapnya:hover {
+    background-color: #218838; /* Mengubah warna latar belakang menjadi hijau gelap saat hover */
+}
+
+/* Media Query untuk layar kecil (misalnya ponsel) */
+@media (max-width: 768px) {
+    /* Mengubah grid agar kolom menyesuaikan dengan ukuran layar */
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* Membuat dua kolom untuk layar kecil */
+    }
+
+    iframe {
+        height: 160px; /* Menyesuaikan tinggi video agar tidak terlalu besar pada layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mengubah grid agar kolom hanya 2 untuk layar ponsel */
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* Menampilkan dua kolom per baris */
+    }
+
+    iframe {
+        height: 140px; /* Menyesuaikan tinggi video untuk layar yang lebih kecil */
+    }
+}
+
+
+/* Seksi Testimoni */
+.testimoni-section {
+    margin: 3rem 0; /* Ruang di atas dan bawah section */
+    padding: 2rem 0; /* Ruang dalam section */
+    background-color: #ffffff; /* Opsional: jika ingin berbeda dari kontainer */
+    text-align: center;
+}
+
+/* Judul Bagian Testimoni */
+.testimoni-section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f39c12;;
+    margin-bottom: 2rem; /* Spasi antara judul dan kontainer testimoni */
+}
+
+/* Kontainer Testimoni */
+.testimoni-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: nowrap; /* Tidak membungkus elemen */
+    padding: 2rem;
+    background-color: #ffffff;
+    overflow-x: auto; /* Scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling untuk perangkat sentuh */
+    border-radius: 15px; /* Opsional: sedikit lengkung pada kontainer */
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* Opsional: menambahkan bayangan */
+    margin: 0 auto; /* Agar kontainer tetap berada di tengah */
+    max-width: 100%; /* Agar kontainer tidak lebih besar dari layar */
+}
+
+/* Gaya untuk Setiap Kartu Testimoni */
+.testimoni-card {
+    flex: 0 0 auto; /* Kartu tidak mengubah ukuran otomatis */
+    min-width: 250px; /* Menentukan ukuran minimum kartu agar tidak terlalu kecil */
+    width: 300px; /* Lebar tetap untuk kartu */
+    position: relative; /* Dibutuhkan untuk pseudo-elemen */
+    background: #fff;
+    border-radius: 10px; /* Sudut melengkung untuk kartu */
+    border: 1px solid #28a745; /* Border hijau lebih tebal */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Padding dalam kartu */
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Garis Hijau di Atas */
+.testimoni-card::before {
+    content: "";
+    position: absolute;
+    top: 0; /* Menyelaraskan garis dengan bagian atas kartu */
+    left: 0;
+    width: 100%;
+    height: 5px; /* Ketebalan garis hijau */
+    background-color: #28a745; /* Warna hijau */
+    border-top-left-radius: 10px; /* Menyesuaikan dengan border-radius kartu */
+    border-top-right-radius: 10px; /* Menyesuaikan dengan border-radius kartu */
+}
+/* Efek Hover pada Kartu */
+.testimoni-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background-color: #E6E6FA;
+}
+
+/* Avatar Pengguna */
+.avatar img {
+        width: 110px; /* Ukuran gambar */
+        height: 110px; /* Ukuran gambar */
+        border-radius: 50%; /* Membuat border lingkaran */
+        border: 3px solid #28a745; /* Border dengan warna dan ketebalan */
+        object-fit: cover; /* Agar gambar tidak terdistorsi */
+        margin-bottom: 5px; /* Menambahkan margin bawah */
+    }
+
+/* Kutipan */
+.quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Informasi Penulis */
+.author-info h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.author-info span {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Scrollbar kustom untuk browser modern */
+.testimoni-container::-webkit-scrollbar {
+    height: 8px; /* Tinggi scrollbar horizontal */
+}
+
+.testimoni-container::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Warna scrollbar */
+    border-radius: 4px;
+}
+
+.testimoni-container::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* Warna saat dihover */
+}
+
+/* Bagian untuk link terkait */
+.related-links {
+    text-align: center; /* Memusatkan semua konten */
+    padding: 20px; /* Memberikan ruang di sekitar bagian ini */
+    background-color: #ffffff; /* Warna latar belakang putih */
+    margin-top: 20px; /* Memberikan jarak atas pada seluruh bagian */
+}
+
+/* Kontainer untuk logo atau link terkait */
+.links-container {
+    display: flex; /* Mengatur elemen di dalamnya secara horizontal */
+    justify-content: center; /* Memastikan elemen tetap berada di tengah */
+    gap: 60px; /* Menambah jarak antar elemen (logo-link) */
+    flex-wrap: wrap; /* Membungkus elemen jika ruang tidak cukup */
+    margin: 0 auto; /* Memusatkan kontainer dan memberikan jarak kiri dan kanan */
+}
+
+/* Logo-link terkait */
+.links-container img {
+    width: 120px; /* Lebar tetap untuk setiap logo */
+    height: auto; /* Menjaga proporsi logo */
+    transition: transform 0.3s, opacity 0.3s; /* Transisi untuk efek hover */
+}
+
+/* Efek hover untuk logo */
+.links-container img:hover {
+    transform: scale(1.1); /* Membesarkan logo saat kursor diarahkan */
+    opacity: 0.8; /* Mengurangi opacity untuk efek visual */
+}
+
+/* Media Query untuk layar kecil (mobile) */
+@media (max-width: 768px) {
+    /* Menjaga agar logo tetap di tengah dan responsif pada layar kecil */
+    .links-container {
+        justify-content: center; /* Memastikan logo tetap terpusat */
+        gap: 20px; /* Mengurangi jarak antar logo sedikit untuk layar kecil */
+    }
+
+    /* Mengatur ukuran gambar logo agar lebih responsif */
+    .links-container img {
+        width: 100px; /* Mengurangi ukuran logo pada layar kecil */
+    }
+}
+
+/* Media Query untuk layar sangat kecil (phone portrait) */
+@media (max-width: 480px) {
+    /* Memastikan logo lebih kecil pada perangkat dengan layar sangat kecil */
+    .links-container img {
+        width: 80px; /* Mengurangi ukuran logo lebih lanjut */
+    }
+
+    .related-links {
+        padding: 10px; /* Mengurangi padding pada layar kecil */
+    }
+}
