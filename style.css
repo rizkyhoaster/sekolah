@@ -77,7 +77,7 @@ body {
   
   /* Tombol Login */
   .login-btn {
-    background-color: #f39c12;
+    background-color: #e74c3c;
     color: #fff;
     border: none;
     padding: 8px 15px;
@@ -87,7 +87,7 @@ body {
   }
   
   .login-btn:hover {
-    background-color: #e67e22; /* Efek hover tombol login */
+    background-color: #ff4b5c /* Efek hover tombol login */
   }
 /* Gaya dasar untuk dropdown dan submenu */
 .dropdown {
@@ -663,7 +663,7 @@ h3 {
 }
 
 .lainnya-btn {
-    background-color: #f39c12; /* Warna hijau seperti label */
+    background-color: #e74c3c; /* Warna hijau seperti label */
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -675,7 +675,7 @@ h3 {
 }
 
 .lainnya-btn:hover {
-    background-color: #f5a623; /* Warna lebih gelap saat hover */
+    background-color: #f44336; /* Warna lebih gelap saat hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan saat hover */
 }
 /* tombol lainnya yang artikel*/
@@ -685,7 +685,7 @@ h3 {
 }
 
 .lainnya1-btn {
-    background-color: #28a745; /* Warna hijau seperti label */
+    background-color: #e74c3c; /* Warna hijau seperti label */
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -697,19 +697,20 @@ h3 {
 }
 
 .lainnya1-btn:hover {
-    background-color: #f5a623; /* Warna lebih gelap saat hover */
+    background-color: #f44336; /* Warna lebih gelap saat hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan saat hover */
 }
-/* Footer bergaye */
+/* Footer Minimalis dan Elegan */
 .footer {
-    background: linear-gradient(135deg, #2c3e50, #015601);
-    color: #fff;
+    background-color: #f8f9fa; /* Putih abu-abu lembut */
+    color: #444; /* Abu gelap untuk teks */
     padding: 40px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
+    border-top: 3px solid #e74c3c; /* Garis aksen merah */
 }
 
 .footer-container {
@@ -725,22 +726,22 @@ h3 {
     flex: 1 1 calc(33.333% - 20px);
     min-width: 250px;
     margin: 0 10px;
-    animation: fadeInUp 1s ease;
 }
 
 .footer-section h4 {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 15px;
-    color: #ffdf5d;
-    border-bottom: 2px solid #ffdf5d;
+    color: #e74c3c; /* Merah aksen */
+    border-bottom: 2px solid #e74c3c;
     display: inline-block;
     padding-bottom: 5px;
 }
 
 .footer-section p,
 .footer-section ul {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555; /* Abu sedang */
 }
 
 .footer-section ul {
@@ -749,29 +750,30 @@ h3 {
 }
 
 .footer-section ul li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #ffdf5d;
+    color: #e74c3c; /* Aksen merah */
     transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: #ff6f61;
+    color: #c0392b; /* Merah lebih gelap saat hover */
 }
 
 .footer-section ul.social-media {
     display: flex;
     gap: 15px;
+    margin-top: 10px;
 }
 
 .footer-section ul.social-media li a {
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
-    background: #f39c12;
-    padding: 10px;
+    background: #e74c3c; /* Tombol merah aksen */
+    padding: 8px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -780,18 +782,19 @@ h3 {
 }
 
 .footer-section ul.social-media li a:hover {
-    background: #ffdf5d;
+    background: #c0392b; /* Merah lebih gelap saat hover */
     transform: scale(1.1);
 }
 
 .footer-bottom {
     text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    color: #fff;
+    padding: 15px 20px;
+    font-size: 12px;
+    color: #777; /* Abu lebih terang */
+    border-top: 1px solid #ddd; /* Garis pemisah tipis */
 }
 
-/* Responsive Design */
+/* Responsif */
 @media (max-width: 768px) {
     .footer {
         flex-direction: column;
@@ -808,19 +811,6 @@ h3 {
         justify-content: center;
     }
 }
-
-/* Keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 /* Login Modal Styles */
 .login-modal {
@@ -881,7 +871,7 @@ h3 {
 .login-modal-content button {
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #e74c3c;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -890,5 +880,5 @@ h3 {
 }
 
 .login-modal-content button:hover {
-    background-color: #218838;
+    background-color: #f44336;
 }
