@@ -188,7 +188,7 @@ p {
 }
 
 .btn-lainnya {
-    background-color: #28a745; /* Warna tombol */
+    background-color: #e74c3c; /* Warna tombol */
     color: #fff; /* Warna teks tombol */
     padding: 10px 20px; /* Jarak dalam tombol */
     text-decoration: none; /* Menghapus garis bawah pada link */
@@ -200,7 +200,7 @@ p {
 }
 
 .btn-lainnya:hover {
-    background-color: #f5a623; /* Warna tombol saat hover */
+    background-color: #f44336; /* Warna tombol saat hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar saat hover */
 }
 
@@ -340,7 +340,7 @@ p {
 }
 /* Heading styling */
 h2 {
-    color: #ffc107;
+    color: black;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -354,7 +354,7 @@ p {
 
 /* Unit Kegiatan Mahasiswa Section */
 .unit-kegiatan {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Putih sebagai warna dasar */
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -363,90 +363,129 @@ p {
     scroll-behavior: smooth; /* Scroll yang halus */
 }
 
-/* Styling untuk scrollbar */
+/* Scrollbar hanya muncul saat disentuh */
 .unit-kegiatan::-webkit-scrollbar {
     height: 8px; /* Tinggi scrollbar */
 }
 
 .unit-kegiatan::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5); /* Warna scrollbar */
+    background-color: rgba(231, 76, 60, 0.7); /* Merah lembut untuk scrollbar */
     border-radius: 4px; /* Membuat scrollbar lebih melengkung */
 }
 
+.unit-kegiatan:hover::-webkit-scrollbar {
+    display: initial; /* Scrollbar muncul saat disentuh */
+}
+
+.unit-kegiatan::-webkit-scrollbar {
+    display: none; /* Scrollbar disembunyikan secara default */
+}
+
+/* .ukm-container: Mengatur layout container item UKM */
 .ukm-container {
-    display: flex; /* Membuat elemen saling berbaris horizontal */
-    gap: 15px; /* Jarak antar elemen */
-    overflow-x: auto; /* Scroll horizontal diaktifkan */
-    padding-bottom: 10px; /* Ruang ekstra untuk scrollbar */
-    white-space: nowrap; /* Menjaga elemen tetap dalam satu baris */
-    scroll-snap-type: x mandatory; /* Efek snap pada scroll */
+    display: flex; /* Membuat elemen saling berbaris horizontal (flexbox) */
+    gap: 20px; /* Memberikan jarak antar elemen dalam container */
+    overflow-x: auto; /* Mengaktifkan scroll horizontal saat konten melebihi lebar container */
+    padding-bottom: 10px; /* Memberikan ruang ekstra untuk scrollbar agar tidak tertutupi konten */
+    white-space: nowrap; /* Menjaga agar elemen-elemen tetap dalam satu baris, tanpa membungkus */
+    scroll-snap-type: x mandatory; /* Efek snap pada scroll horizontal, elemen akan "terpaku" pada titik tertentu saat scroll */
 }
 
-
+/* .ukm-item: Gaya untuk tiap item UKM dalam container */
 .ukm-item {
-    text-align: center;
-    width: 280px; /* Ukuran item */
-    flex-shrink: 0; /* Menjaga elemen tetap dalam satu baris */
-    scroll-snap-align: center; /* Posisi snap di tengah */
-    background-color: #ffffff; /* Warna latar item */
-    border: 3px solid #ffc107; /* Membuat border lebih tebal */
-    border-radius: 8px;
-    overflow: hidden; /* Menjaga gambar tetap rapi */
+    text-align: center; /* Menyelaraskan teks di tengah item */
+    width: 280px; /* Lebar tetap untuk tiap item */
+    flex-shrink: 0; /* Memastikan elemen tidak mengecil saat ukuran container mengecil */
+    scroll-snap-align: center; /* Menyelaraskan tiap item di tengah saat scroll */
+    background-color: #ffffff; /* Latar belakang putih untuk item */
+    border: 3px solid #e74c3c; /* Border merah pada item */
+    border-radius: 8px; /* Sudut melengkung pada item */
+    overflow: hidden; /* Menjaga konten tetap dalam batas item, terutama gambar */
+    position: relative; /* Diperlukan untuk menempatkan elemen pseudo dan kontrol posisi */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transisi halus pada transformasi dan bayangan */
 }
 
-/* Membatasi ukuran gambar agar tidak terlalu besar dan sedikit lebih tinggi */
+/* .ukm-item::before: Membuat garis merah di atas item saat hover */
+.ukm-item::before {
+    content: ""; /* Tidak ada konten, hanya elemen garis */
+    position: absolute; /* Menempatkan garis secara absolut di atas item */
+    top: 0; /* Posisi atas garis */
+    left: 0; /* Posisi kiri garis */
+    right: 0; /* Posisi kanan garis */
+    height: 5px; /* Tinggi garis */
+    background-color: #e74c3c; /* Warna garis merah */
+    transform: scaleX(0); /* Awalnya, garis tidak terlihat */
+    transform-origin: left; /* Garis berkembang dari kiri ke kanan */
+    transition: transform 0.3s ease-in-out; /* Transisi halus pada perubahan transform */
+    z-index: 2; /* Pastikan garis muncul di atas gambar */
+}
+
+/* .ukm-item:hover::before: Mengaktifkan garis saat item di-hover */
+.ukm-item:hover::before {
+    transform: scaleX(1); /* Membuat garis muncul saat hover */
+}
+
+/* .ukm-item img: Mengatur gambar di dalam item */
 .ukm-item img {
-    width: 100%;
-    height: 280px; /* Menambah tinggi gambar */
-    border-bottom: 3px solid #ffc107; /* Border bawah pada gambar */
-    transition: transform 0.3s ease-in-out;
-    object-fit: cover;
+    width: 100%; /* Gambar mengambil lebar penuh item */
+    height: 280px; /* Mengatur tinggi gambar */
+    transition: transform 0.3s ease-in-out; /* Transisi halus saat gambar di-hover */
+    object-fit: cover; /* Menjaga rasio aspek gambar agar tetap pas tanpa distorsi */
+    z-index: 1; /* Gambar berada di bawah garis hover */
+    position: relative; /* Menetapkan posisi relatif agar gambar mengikuti urutan layering */
 }
 
+/* .ukm-item img:hover: Efek zoom saat gambar di-hover */
 .ukm-item img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Memperbesar gambar sedikit saat hover */
 }
 
+/* .ukm-item span: Mengatur gaya teks di bawah gambar */
 .ukm-item span {
-    display: block;
-    background-color: #ffd700;
-    color: #333;
-    font-weight: bold;
-    padding: 10px;
-    text-transform: uppercase;
-    font-size: 1rem;
+    display: block; /* Membuat span menjadi elemen block agar mengambil lebar penuh */
+    background-color: #e74c3c; /* Latar belakang merah pada teks */
+    color: #ffffff; /* Teks berwarna putih */
+    font-weight: bold; /* Menebalkan teks */
+    padding: 10px; /* Memberikan padding di sekitar teks */
+    text-transform: uppercase; /* Menyusun teks menjadi kapital semua */
+    font-size: 1rem; /* Ukuran font teks */
+    border-top: 2px solid #c0392b; /* Garis aksen merah gelap di bagian atas */
 }
 
-/* Responsiveness */
+/* Responsiveness: Menyesuaikan layout pada layar lebih kecil */
+
+/* Pada layar lebih kecil dari 768px */
 @media (max-width: 768px) {
     .ukm-container {
-        gap: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
+        gap: 15px; /* Mengurangi jarak antar elemen */
+        padding-left: 10px; /* Menambahkan padding kiri */
+        padding-right: 10px; /* Menambahkan padding kanan */
     }
 
     .ukm-item {
-        width: 250px;
+        width: 250px; /* Mengurangi lebar item agar lebih sesuai dengan layar kecil */
     }
 
     .ukm-item span {
-        font-size: 0.9rem;
+        font-size: 0.9rem; /* Menurunkan ukuran font teks */
     }
 }
 
+/* Pada layar lebih kecil dari 480px */
 @media (max-width: 480px) {
     .ukm-container {
-        overflow-x: scroll; /* Memastikan scroll horizontal pada layar kecil */
+        overflow-x: scroll; /* Memastikan scroll horizontal aktif pada layar kecil */
     }
 
     .ukm-item {
-        width: 210px;
+        width: 210px; /* Lebar item lebih kecil lagi untuk perangkat kecil */
     }
 
     .ukm-item span {
-        font-size: 0.8rem;
+        font-size: 0.8rem; /* Menurunkan ukuran font teks lebih lanjut */
     }
 }
+
 
 /* Galeri Kegiatan Section */
 .galeri-kegiatan {
@@ -466,22 +505,42 @@ p {
 
 .galeri-item {
     text-align: center;
-    width: 100%; /* Sesuaikan dengan grid */
-    border: 5px solid #28a745;  /* Border lebih tebal */
+    width: 100%;
+    border: 3px solid #e74c3c;  /* Border lebih tebal */
     position: relative; /* Menambahkan posisi relatif untuk kontrol posisi anak-anak */
     overflow: hidden;   /* Menghindari gambar melampaui batas container saat di-hover */
     border-radius: 0;   /* Pastikan container tidak memiliki lengkungan */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Menambahkan garis hover di atas gambar */
+.galeri-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: #e74c3c; /* Warna garis */
+    transform: scaleX(0); /* Awalnya tidak terlihat */
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: 2; /* Garis di atas gambar */
+}
+
+.galeri-item:hover::before {
+    transform: scaleX(1); /* Garis muncul saat hover */
 }
 
 .galeri-item img {
-    width: 100%; /* Gambar mengikuti lebar container */
-    height: 200px; /* Tetapkan tinggi untuk membuat gambar berbentuk kotak */
-    border-radius: 0; /* Tidak ada lengkungan, gambar berbentuk kotak */
-    object-fit: cover; /* Mengisi kotak tanpa distorsi */
+    width: 100%;
+    height: 200px;
+    border-radius: 0;
+    object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan untuk tampilan lebih menarik */
-    transition: transform 0.3s ease-in-out; /* Efek transisi saat hover */
-    border-bottom: 3px solid #28a745; /* Border bawah pada gambar */
-    margin-bottom: 0; /* Menghilangkan jarak bawah pada gambar */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1; /* Gambar di bawah garis hover */
+    position: relative;
 }
 
 /* Hover efek untuk memperbesar gambar */
@@ -491,22 +550,40 @@ p {
 
 /* Judul atau keterangan di bawah gambar */
 .galeri-item span {
-    display: block;  /* Mengubah span menjadi elemen block agar bisa mengambil seluruh lebar */
-    margin-top: 0;  /* Menghilangkan jarak atas agar lebih rapat dengan gambar */
-    font-weight: bold;  /* Membuat teks menjadi tebal */
-    color: #333;  /* Mengubah warna teks menjadi putih untuk kontras dengan latar belakang hijau */
-    background-color: #28a745;  /* Memberikan latar belakang warna hijau */
-    padding: 10px;  /* Menambahkan padding di dalam span agar teks tidak terlalu rapat dengan tepi */
-    width: 100%;    /* Mengatur lebar span menjadi 100% dari lebar elemen induk */
+    display: block;
+    font-weight: bold;
+    color: #ffffff; /* Teks berwarna putih */
+    background-color: #e74c3c; /* Warna latar belakang span */
+    padding: 10px;
+    margin-top: 0;
+    width: 100%;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk elegansi */
 }
-/* Galeri Video Section */
-.galeri-video {
-    background-color: #ffffff; /* Menetapkan warna latar belakang putih untuk galeri */
-    padding: 40px; /* Memberikan ruang dalam di sekitar konten */
-    border-radius: 8px; /* Menambahkan sudut melengkung pada galeri */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan halus untuk efek kedalaman */
-    max-width: 100%; /* Menghindari galeri meluas lebih dari lebar layar */
-    margin: 0 auto; /* Menjaga galeri agar selalu berada di tengah layar */
+
+/* Responsif */
+@media (max-width: 768px) {
+    .galeri-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .galeri-item img {
+        height: 150px; /* Kurangi tinggi untuk layar kecil */
+    }
+
+    .galeri-item span {
+        font-size: 0.9rem; /* Sesuaikan ukuran teks */
+    }
+}
+
+@media (max-width: 480px) {
+    .galeri-item img {
+        height: 120px; /* Kurangi tinggi lebih jauh untuk layar kecil */
+    }
+
+    .galeri-item span {
+        font-size: 0.8rem; /* Teks lebih kecil */
+    }
 }
 
 /* Kontainer Video */
@@ -535,8 +612,8 @@ a.lihat-selengkapnya {
     margin-top: 20px; /* Memberikan jarak atas antara video dan link */
     font-weight: bold; /* Menebalkan teks link */
     text-decoration: none; /* Menghapus garis bawah pada link */
-    color: #333; /* Menetapkan warna teks link menjadi abu-abu gelap */
-    background-color: #28a745; /* Menetapkan warna latar belakang hijau pada link */
+    color: #ffffff; /* Menetapkan warna teks link menjadi abu-abu gelap */
+    background-color: #e74c3c; /* Menetapkan warna latar belakang hijau pada link */
     padding: 10px 20px; /* Menambahkan ruang di dalam link */
     border-radius: 5px; /* Memberikan sudut melengkung pada tombol link */
     transition: background-color 0.3s; /* Efek transisi pada perubahan warna latar belakang saat hover */
@@ -544,7 +621,7 @@ a.lihat-selengkapnya {
 
 /* Efek hover pada link "Lihat Selengkapnya" */
 a.lihat-selengkapnya:hover {
-    background-color: #218838; /* Mengubah warna latar belakang menjadi hijau gelap saat hover */
+    background-color: #f44336; /* Mengubah warna latar belakang menjadi hijau gelap saat hover */
 }
 
 /* Media Query untuk layar kecil (misalnya ponsel) */
@@ -610,7 +687,7 @@ a.lihat-selengkapnya:hover {
     position: relative; /* Dibutuhkan untuk pseudo-elemen */
     background: #fff;
     border-radius: 10px; /* Sudut melengkung untuk kartu */
-    border: 1px solid #28a745; /* Border hijau lebih tebal */
+    border: 1px solid #e74c3c; /* Border hijau lebih tebal */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px; /* Padding dalam kartu */
     text-align: center;
@@ -625,7 +702,7 @@ a.lihat-selengkapnya:hover {
     left: 0;
     width: 100%;
     height: 5px; /* Ketebalan garis hijau */
-    background-color: #28a745; /* Warna hijau */
+    background-color: #e74c3c; /* Warna hijau */
     border-top-left-radius: 10px; /* Menyesuaikan dengan border-radius kartu */
     border-top-right-radius: 10px; /* Menyesuaikan dengan border-radius kartu */
 }
@@ -641,7 +718,7 @@ a.lihat-selengkapnya:hover {
         width: 110px; /* Ukuran gambar */
         height: 110px; /* Ukuran gambar */
         border-radius: 50%; /* Membuat border lingkaran */
-        border: 3px solid #28a745; /* Border dengan warna dan ketebalan */
+        border: 3px solid #e74c3c; /* Border dengan warna dan ketebalan */
         object-fit: cover; /* Agar gambar tidak terdistorsi */
         margin-bottom: 5px; /* Menambahkan margin bawah */
     }
